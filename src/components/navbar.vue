@@ -1,6 +1,6 @@
 <template>
 <!--navbar-->
-<nav class="navbar d-print shadow rounded-bottom justify-content-center navbar-expand-sm navbar-dark bg-dark fixed-top">
+<nav class="navbar m-border shadow m-rounded-bottom justify-content-center navbar-expand-sm m-bg fixed-top">
 
   <!--toggler-->
   <button class="navbar-toggler mb-1" type="button" data-toggle="collapse" data-target="#navContainer" aria-controls="navContainer" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,7 +13,7 @@
     <!--nav-->
     <div class="navbar-nav ml-sm-4">
       <router-link data-toggle="collapse" data-target=".navbar-collapse.show" class="nav-item nav-link" to="/home">Home</router-link>
-      <router-link data-toggle="collapse" data-target=".navbar-collapse.show" class="nav-item nav-link" :to="{name: 'projectsIndex'}">Projects</router-link>
+      <router-link data-toggle="collapse" data-target=".navbar-collapse.show" class="nav-item nav-link" to="/projects">Projects</router-link>
       <router-link data-toggle="collapse" data-target=".navbar-collapse.show" class="nav-item nav-link" to="/members">Members</router-link>
     </div>
     <!--end of nav-->
@@ -37,7 +37,12 @@ export default {
   text-align: center;
 }
 
+
+.nav-link {
+  color: var(--stroke)!important;
+}
+
 .router-link-active {
-  color: var(--teal)!important;
+  text-decoration: underline;
 }
 </style>

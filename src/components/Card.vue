@@ -15,7 +15,9 @@
 
 <script>
 export default {
-    name: 'card'
+    name: 'card',
+      props: ["thumbnailUrl", "shortDescription", "name", "url"]
+
 }
 </script>
 

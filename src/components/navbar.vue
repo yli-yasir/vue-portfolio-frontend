@@ -37,8 +37,16 @@ export default {
   text-align: center;
 }
 
+.nav-link{
+  color: #9E9E9E;
+  font-size: 1.2rem;
+}
+
 .router-link-active {
+  color:white;
   text-decoration: underline;
 }
+
+
 
 </style>

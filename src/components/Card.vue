@@ -1,6 +1,6 @@
 <template>
-  <div class="card m-3 m-rounded m-bg-secondary shadow">
-    <img :src="thumbnailUrl" class="card-img-top m-rounded-top p-1" alt="thumbnail">
+  <div class="m-border card m-3 m-rounded m-bg-secondary shadow">
+    <img :src="thumbnailUrl" class=" card-img-top m-rounded-top p-1" alt="thumbnail">
 
     <div class="card-body">
       <div class="card-text">

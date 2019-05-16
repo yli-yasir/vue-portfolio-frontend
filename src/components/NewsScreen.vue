@@ -2,7 +2,7 @@
   <loading-screen endpoint="/api/news">
     <template v-slot:default="slotProps">
       <div
-        class="my-3 p-3 shadow container-fluid m-bg-secondary m-rounded d-inline-block"
+        class="my-3 m-border p-3 shadow container-fluid m-bg-secondary m-rounded d-inline-block"
         v-for="news in slotProps.response"
         :key="news._id"
       >

@@ -2,11 +2,11 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-7">
-        <h5 class="mt-2">Latest News:</h5>
+        <h3 class="mt-2">Latest News:</h3>
         <news-screen></news-screen>
       </div>
       <div class="col-md">
-        <h5 class="mt-2">Latest Projects:</h5>
+        <h3 class="mt-2">Latest Projects:</h3>
         <index-screen endpoint="/api/projects" route-for-single="projectDetails"></index-screen>
       </div>
     </div>

@@ -19,10 +19,10 @@ components: {
 
 :root{
   
-  --bg-primary: #202124;
-  --bg-secondary: #2c2d30 ;
+  --bg-primary: #202026;
+  --bg-secondary: #202026 ;
   --bg-tertiary: #00E676;
-  --stroke: #46735B;
+  --stroke:#181a1f;
 }
 
 html, body, #app {
@@ -32,11 +32,6 @@ font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   
-}
-
-a{
-  color: white !important;
-  font-size: 1.2rem;
 }
 
 body{
@@ -66,7 +61,7 @@ body{
 }
 
 .m-border {
-  border: 1px solid var(--stroke) !important;
+  border: 2px solid var(--stroke) !important;
 }
 
 .m-rounded-bottom {

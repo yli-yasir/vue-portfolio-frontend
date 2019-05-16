@@ -18,12 +18,51 @@ components: {
 <style>
 
 :root{
-  --bg: #00FFB2;
-  --stroke: #202124;
+  
+  --bg-primary: #202124;
+  --bg-secondary: #2c2d30 ;
+  --bg-tertiary: #00E676;
+  --stroke: #46735B;
 }
 
-.m-bg{
-  background-color: var(--bg);
+html, body, #app {
+  height: 100%;
+  color:white;
+font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+}
+
+a{
+  color: white !important;
+  font-size: 1.2rem;
+}
+
+body{
+  background-color: var(--bg-primary)!important;
+}
+
+.content {
+  background-image: url(#);
+  background-position: center top 55px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: auto calc(100vh - 200px);
+  height: 100%;
+  padding-top: 70px;
+}
+
+.m-bg-primary{
+  background-color: var(--bg-primary)!important;
+}
+
+.m-bg-secondary{
+  background-color: var(--bg-secondary)!important;
+}
+
+.m-bg-tertiary{
+  background-color: var(--bg-tertiary)!important;
 }
 
 .m-border {
@@ -34,14 +73,14 @@ components: {
   border-bottom-right-radius: 1.5rem !important;
   border-bottom-left-radius: 1.5rem !important;
 }
-
-
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: var(--stroke);
+.m-rounded {
+  border-radius: 1.5rem !important;
 }
+
+.m-rounded-top {
+  border-top-right-radius: 1.5rem !important;
+  border-top-left-radius: 1.5rem !important;
+}
+
 
 </style>

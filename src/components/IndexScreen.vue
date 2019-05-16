@@ -27,3 +27,12 @@ export default {
         loadingScreen, card}
 }
 </script>
+
+<style scoped>
+.index-screen{
+  display: flex;
+          justify-content: space-evenly;
+          align-items: baseline;
+          flex-flow: row wrap;
+}
+</style>

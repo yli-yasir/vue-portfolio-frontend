@@ -1,6 +1,6 @@
 <template>
-  <div class="card m-3 rounded bg-dark shadow">
-    <img :src="thumbnailUrl" class="card-img-top rounded-top p-1" alt="thumbnail">
+  <div class="card m-3 m-rounded m-bg-secondary shadow">
+    <img :src="thumbnailUrl" class="card-img-top m-rounded-top p-1" alt="thumbnail">
 
     <div class="card-body">
       <div class="card-text">
@@ -22,4 +22,23 @@ export default {
 </script>
 
 <style scoped>
+.card {
+  border: 0px;
+  width: 18rem;
+}
+
+.card-text{
+  max-height:150px;
+  height:150px;
+  overflow: auto;
+}
+
+.card-btn{
+  margin-top:1rem;
+}
+
+.card-img-top{
+  height:170px;
+  max-height:170px;
+}
 </style>

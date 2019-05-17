@@ -24,6 +24,12 @@ import(/* webpackChunkName: "editMemberForm" */ "./views/EditMemberForm.vue");
 const MemberDetails = ()=>
 import(/* webpackChunkName: "MemberDetails" */ "./views/MemberDetails.vue");
 
+
+const emptyNewsForm = () =>
+  import(/* webpackChunkName: "emptyNewsForm" */ "./views/EmptyNewsForm.vue");
+const editNewsForm = () =>
+import(/* webpackChunkName: "editNewsForm" */ "./views/EditNewsForm.vue");
+
 const about = () =>
   import(/* webpackChunkName: "about" */ "./views/About.vue");
  
@@ -102,6 +108,19 @@ export default new Router({
           endpoint: "/api/members/" + route.params._id,
           routeForSingle: "memberDetails"
         };
+      }
+    },
+    {
+      name: "newNews",
+      path: "/news/new",
+      component: emptyNewsForm
+    },
+    {
+      name: "editNews",
+      path: "/news/:_id/edit",
+      component: editNewsForm,
+      props: route => {
+        return { endpoint: "/api/news/" + route.params._id , newsId: route.params._id };
       }
     },
     {

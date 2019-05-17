@@ -18,6 +18,7 @@ export default {
       </div>
       <div class="col-md-2"></div>
       </div>
+      </div>
       </template>
       </loading-screen>
  </template>

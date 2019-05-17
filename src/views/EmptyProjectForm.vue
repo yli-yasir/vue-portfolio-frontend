@@ -43,7 +43,7 @@ import formGroup from '@/components/FormGroup'
 import branchedFormGroup from '@/components/BranchedFormGroup'
 
 export default {
-    name: "empty-project-form",
+    name: "project-form",
   props: {
     method: {type: String, default: "post"},
     action : {type: String, default: "/api/projects"},

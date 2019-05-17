@@ -9,6 +9,7 @@ Vue.use(Router);
 // which is lazy-loaded when the route is visited;
 const indexScreen = () =>
   import(/* webpackChunkName: "indexScreen" */ "./components/IndexScreen.vue");
+
 const emptyProjectForm = () =>
   import(/* webpackChunkName: "emptyProjectForm" */ "./views/EmptyProjectForm.vue");
 const editProjectForm = () =>
@@ -16,8 +17,16 @@ import(/* webpackChunkName: "editProjectForm" */ "./views/EditProjectForm.vue");
 const projectDetails = ()=>
 import(/* webpackChunkName: "projectDetails" */ "./views/ProjectDetails.vue");
 
-const aboutView = () =>
+const emptyMemberForm = () =>
+  import(/* webpackChunkName: "emptyMemberForm" */ "./views/EmptyMemberForm.vue");
+const editMemberForm = () =>
+import(/* webpackChunkName: "editMemberForm" */ "./views/EditMemberForm.vue");
+const MemberDetails = ()=>
+import(/* webpackChunkName: "MemberDetails" */ "./views/MemberDetails.vue");
+
+const about = () =>
   import(/* webpackChunkName: "about" */ "./views/About.vue");
+ 
 
 export default new Router({
   mode: "history",
@@ -63,10 +72,42 @@ export default new Router({
         return { endpoint: "/api/projects/" + route.params._id };
       }
     },
+    //--Members-----
+    {
+      name: "membersIndex",
+      path: "/members",
+      component: indexScreen,
+      props: function() {
+        return { endpoint: "/api/members", routeForSingle: "memberDetails" };
+      }
+    }, {
+      name: "newMember",
+      path: "/members/new",
+      component: emptyMemberForm
+    },
+    {
+      name: "editMember",
+      path: "/members/:_id/edit",
+      component: editMemberForm,
+      props: route => {
+        return { endpoint: "/api/members/" + route.params._id , memberId: route.params._id };
+      }
+    },
+    {
+      name: "memberDetails",
+      path: "/members/:_id",
+      component: MemberDetails,
+      props: route => {
+        return {
+          endpoint: "/api/members/" + route.params._id,
+          routeForSingle: "memberDetails"
+        };
+      }
+    },
     {
       path: "/about",
       name: "about",
-      component: aboutView
+      component: about
     }
   ]
 });

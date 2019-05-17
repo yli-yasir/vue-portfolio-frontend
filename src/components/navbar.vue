@@ -1,6 +1,6 @@
 <template>
 <!--navbar-->
-<nav class="navbar shadow m-rounded-bottom justify-content-center navbar-expand-sm m-bg-secondary fixed-top">
+<nav class="navbar m-border shadow m-rounded-bottom justify-content-center navbar-expand-sm m-bg-secondary fixed-top">
 
   <!--toggler-->
   <button class="navbar-toggler mb-1" type="button" data-toggle="collapse" data-target="#navContainer" aria-controls="navContainer" aria-expanded="false" aria-label="Toggle navigation">

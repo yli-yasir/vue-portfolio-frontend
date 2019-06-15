@@ -1,27 +1,34 @@
 <template>
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-7">
-        <h3 class="mt-2">Latest News:</h3>
-        <news-screen></news-screen>
-      </div>
-      <div class="col-md">
-        <h3 class="mt-2">Latest Projects:</h3>
-        <index-screen endpoint="/api/projects" route-for-single="projectDetails"></index-screen>
-      </div>
-    </div>
+
+    <loader endpoint="api/news">
+
+      <template v-slot:content="slotProps">
+          <div class="list-group">
+            <list-group-item 
+            v-for="item in slotProps.response"
+            :key="item._id"
+            :heading="item.name"
+            :description="item.description"
+            ></list-group-item>
+          </div>
+      </template>
+
+
+    </loader>
+
   </div>
 </template>
 
 
 <script>
-import newsScreen from '@/components/NewsScreen';
-import indexScreen from '@/components/IndexScreen';
+import loader from "@/components/Loader";
+import listGroupItem from "@/components/ListGroupItem"
 
 // @ is an alias to /src
 export default {
   name: "home",
-  components: {newsScreen,indexScreen}
+  components: { loader, listGroupItem}
 };
 </script>
 

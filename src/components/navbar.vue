@@ -1,7 +1,6 @@
 <template>
 <!--navbar-->
-<nav class="navbar m-border shadow m-rounded-bottom justify-content-center navbar-expand-sm m-bg-secondary fixed-top">
-
+<nav class="navbar navbar-expand-sm navbar-dark bg-primary fixed-top">
   <!--toggler-->
   <button class="navbar-toggler mb-1" type="button" data-toggle="collapse" data-target="#navContainer" aria-controls="navContainer" aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
@@ -33,20 +32,17 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.navbar-nav {
-  text-align: center;
+
+.navbar {
+  padding: 0;
 }
 
 .nav-link{
-  color: #9E9E9E;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  text-transform: uppercase;
 }
-
 .router-link-active {
   color:white;
-  text-decoration: underline;
 }
-
-
 
 </style>

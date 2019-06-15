@@ -1,13 +1,15 @@
 <script>
-import loadingScreen from '@/components/LoadingScreen'
+import loader from '@/mixins/Loader'
 import youtubeEmbed from '@/components/YoutubeEmbed'
 import carousel from '@/components/Carousel'
 
 export default {
   props: ["endpoint"],
-  components: {loadingScreen,youtubeEmbed,carousel}
+  components: {youtubeEmbed,carousel},
+  mixins: {loader}
 };
 </script>
+
 <template>
   <loading-screen class="container-fluid" :endpoint="endpoint">
     <template v-slot:default="slotProps">

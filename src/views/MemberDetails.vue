@@ -1,5 +1,5 @@
 <script>
-import loadingScreen from '@/components/LoadingScreen'
+import loader from '@/mixins/Loader'
 export default {
   props: ["endpoint"],
   components: {loadingScreen}

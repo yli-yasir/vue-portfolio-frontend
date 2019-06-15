@@ -1,38 +1,35 @@
 <template>
-<loading-screen class="container-fluid" :endpoint="endpoint">
-<template v-slot:default="slotProps">
-<div class="index-screen">
-<card 
-  v-for="item in slotProps.response" 
-  :thumbnail-url="item.thumbnailUrl"
-  :short-description="item.shortDescription"
-  :name="item.name"
-  :key="item._id"
-  :url="{name: routeForSingle , params: { _id : item._id } }"
-  >
-  </card>
+  <div class="index-screen">
+    <card
+      :class="cardColor"
+      v-for="item in response"
+      :cardable="item"
+      :key="item._id"
+      :url="{ name: routeForSingle , params: { _id : item._id } }
+      "
+    ></card>
   </div>
-  </template>
-  </loading-screen>
 </template>
 
 <script>
-import loadingScreen from './LoadingScreen';
-import card from './Card';
+import card from "./Card";
+import loader from "@/mixins/Loader"
 
 export default {
-    name:'index-screen',
-    props: ["endpoint", "routeForSingle"],
-    components:{
-        loadingScreen, card}
-}
+  mixins: [loader],
+  name: "index-screen",
+  components: {
+    card
+  },
+  props: {cardColor: String,routeForSingle: String}
+};
 </script>
 
 <style scoped>
-.index-screen{
+.index-screen {
   display: flex;
-          justify-content: space-evenly;
-          align-items: baseline;
-          flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: baseline;
+  flex-flow: row wrap;
 }
 </style>

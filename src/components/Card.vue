@@ -1,22 +1,19 @@
 <template>
-  <div class="m-border card m-3 m-rounded m-bg-secondary shadow">
-    <img :src="thumbnailUrl" class=" card-img-top m-rounded-top p-1" alt="thumbnail">
-
+  <div class="card bg-light m-3">
+    <img :src="cardable.thumbnailUrl" class="card-img-top" alt="thumbnail">
     <div class="card-body">
       <div class="card-text">
-        <h5 class="card-title">{{name}}</h5>
-        <p>{{shortDescription}}</p>
+        <h3 class="card-title">{{cardable.name}}</h3>
+        <p>{{cardable.description}}</p>
       </div>
-
-      <router-link :to="url" class="btn card-btn btn-success rounded">More Details</router-link>
+      <router-link :to="url" class="btn card-btn btn-primary">More</router-link>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-    name: 'card',
-      props: ["thumbnailUrl", "shortDescription", "name", "url"]
+      props: {cardable: Object, url: String}
 
 }
 </script>
@@ -25,6 +22,7 @@ export default {
 .card {
   border: 0px;
   width: 18rem;
+
 }
 
 .card-text{

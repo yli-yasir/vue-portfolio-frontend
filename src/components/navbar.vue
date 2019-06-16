@@ -1,8 +1,8 @@
 <template>
 <!--navbar-->
-<nav class="navbar navbar-expand-sm navbar-dark bg-primary fixed-top">
+<nav class="navbar navbar-expand-sm navbar-dark bg-primary fixed-top justify-content-center">
   <!--toggler-->
-  <button class="navbar-toggler mb-1" type="button" data-toggle="collapse" data-target="#navContainer" aria-controls="navContainer" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler m-1" type="button" data-toggle="collapse" data-target="#navContainer" aria-controls="navContainer" aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
 </button>
 
@@ -33,6 +33,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
+.navbar-nav {
+  text-align: center
+}
 .navbar {
   padding: 0;
 }
@@ -44,5 +47,6 @@ export default {
 .router-link-active {
   color:white;
 }
+
 
 </style>

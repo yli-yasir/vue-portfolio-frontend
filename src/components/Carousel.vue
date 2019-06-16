@@ -6,7 +6,7 @@ export default { name: "carousel", props: ["imgUrls"] };
   <div class="embed-responsive embed-responsive-16by9 mb-2">
     <div id="carouselControls" class="carousel slide aspect-ratio-child" data-ride="carousel">
       <div class="carousel-inner">
-        <div v-for="(imgUrl,index) in imgUrls" class="carousel-item" :class="{ active : index==0 }">
+        <div v-for="(imgUrl,index) in imgUrls" :key="imgUrl + index" class="carousel-item" :class="{ active : index==0 }">
           <img :src="imgUrl" alt="screenshot">
         </div>
       </div>
@@ -21,3 +21,26 @@ export default { name: "carousel", props: ["imgUrls"] };
     </a>
   </div>
 </template>
+
+
+<style lang="scss" scoped>
+
+.aspect-ratio-child {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-inner,.carousel-item,.carousel-item *{
+  height:100%;
+  width:100%;}
+
+.carousel-item * {
+  object-fit: contain;
+}
+
+</style>
+
+

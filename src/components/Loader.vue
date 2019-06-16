@@ -1,7 +1,7 @@
 <template>
   <div>
-    <slot v-if="error" name="error">Something went wrong while loading the data</slot>
-    <slot v-else name="content" :response="responsed"></slot>
+    <slot v-if="isError" name="error">Something went wrong while loading the data</slot>
+    <slot v-else name="content" :isLoading="isLoading" :response="response"></slot>
   </div>
 </template>
 
@@ -12,24 +12,26 @@ export default {
   props: { endpoint: String },
   data: function() {
     return {
-      response: '',
-      loading: true,
-      success: false,
-      error: false,
+      //initial numerical value for skeleton screens, so if the reponse is not there yet,
+      // we render n empty items
+      response: 3,
+      isLoading: true,
+      isSuccess: false,
+      isError: false
     };
   },
   methods: {
     load: async function() {
-        try {
-          let response = await axios.get(this.endpoint);
-          //this.response = response.data;
-          this.success = true;
-          this.loading = false;
-        } catch (err) {
-          this.error = true;
-          this.loading = false;
-        }
+      try {
+        let response = await axios.get(this.endpoint);
+        this.response = response.data;
+        this.isLoading = false;
+        this.isSuccess = true;
+      } catch (err) {
+        this.isError = true;
+        this.isLoading = false;
       }
+    }
   },
   mounted: function() {
     console.log("mounted");
@@ -38,13 +40,6 @@ export default {
   watch: {
     endpoint: function() {
       this.load();
-    }
-  },
-  computed:{
-    //this is for skeleton screens, so if the reponse is not there yet, we render 6
-    //empty items
-    responsed : function(){
-      return this.response === '' ? 6 : this.response;
     }
   }
 };

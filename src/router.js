@@ -7,8 +7,8 @@ Vue.use(Router);
 // route level code-splitting
 // this generates a separate chunk (about.[hash].js) for this route
 // which is lazy-loaded when the route is visited;
-// const indexScreen = () =>
-//   import(/* webpackChunkName: "indexScreen" */ "./components/IndexScreen.vue");
+const projectsIndexView = () =>
+  import(/* webpackChunkName: "projectsIndex" */ "./views/projects/Index");
 // const emptyProjectForm = () =>
 //   import(
 //     /* webpackChunkName: "emptyProjectForm" */ "./views/EmptyProjectForm.vue"
@@ -17,8 +17,8 @@ Vue.use(Router);
 //   import(
 //     /* webpackChunkName: "editProjectForm" */ "./views/EditProjectForm.vue"
 //   );
-// const projectDetails = () =>
-//   import(/* webpackChunkName: "projectDetails" */ "./views/ProjectDetails.vue");
+const projectDetailsView = () =>
+  import(/* webpackChunkName: "projectDetails" */ "./views/projects/Details");
 
 // const emptyMemberForm = () =>
 //   import(
@@ -47,16 +47,13 @@ export default new Router({
       name: "home",
       path: "/home",
       component: homeView
-    }
-  //   //--PROJECTS--------------
-  //   {
-  //     name: "projectsIndex",
-  //     path: "/projects",
-  //     component: indexScreen,
-  //     props: route => {
-  //       return { endpoint: "/api/projects", routeForSingle: "projectDetails" };
-  //     }
-  //   },
+    },
+    //--PROJECTS--------------
+    {
+      name: "projectsIndex",
+      path: "/projects",
+      component: projectsIndexView,
+    },
   //   {
   //     name: "newProject",
   //     path: "/projects/new",
@@ -73,14 +70,16 @@ export default new Router({
   //       };
   //     }
   //   },
-  //   {
-  //     name: "projectDetails",
-  //     path: "/projects/:_id",
-  //     component: projectDetails,
-  //     props: route => {
-  //       return { endpoint: "/api/projects/" + route.params._id };
-  //     }
-  //   },
+    {
+      name: "projectDetails",
+      path: "/projects/:id",
+      component: projectDetailsView,
+      props: route => {
+        return {
+          id: route.params.id
+        }
+      }
+    },
   //   //--Members-----
   //   {
   //     name: "membersIndex",

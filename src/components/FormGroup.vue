@@ -1,41 +1,37 @@
 <template>
   <div class="form-group">
-      <!-- below adding a 0 to inputId as the label is only for the first inputId -->
-    <label :for="inputId + 0">{{inputLabel}}</label>
-    <div v-if="textArea">
-      <textarea
-        v-for="(one,index) in ownDataset"
-        :name="inputName"
-        class="form-control"
-        :id="inputId + index"
-        :aria-describedby="helpId"
-        :placeholder="placeholder"
-      >{{one}}</textarea>
-    </div>
-    <div v-else>
-      <input
-        v-for="(one,index) in ownDataset"
-        :value="one"
-        :type="inputType"
-        :name="inputName"
-        class="form-control"
-        :id="inputId + index"
-        :aria-describedby="helpId"
-        :placeholder="placeholder"
-      >
-    </div>
-    <button v-if="addToDatasetButton" type="button" class="btn btn-primary" @click="addNewItem">+</button>
+    <label :for="inputId">
+      <b>{{inputLabel}}</b>
+    </label>
+    <!-- intentionally using v-model instead of mustache-->
+    <textarea
+      v-if="textArea"
+      :name="inputName"
+      class="form-control"
+      :id="inputId"
+      :aria-describedby="helpId"
+      :placeholder="placeholder"
+      v-model="content"
+    ></textarea>
+
+    <input
+      v-else
+      :type="inputType"
+      :name="inputName"
+      class="form-control"
+      :id="inputId"
+      :aria-describedby="helpId"
+      :placeholder="placeholder"
+      :value="content"
+    >
     <small :id="helpId" class="form-text text-muted">{{help}}</small>
   </div>
 </template>
 
 
 <script>
-import bindedToDatasetMixin from '@/mixins/BindedToDataset'
-
 export default {
   name: "form-group",
-  mixins: [bindedToDatasetMixin],
   props: {
     inputType: { type: String, default: "text" },
     textArea: { type: Boolean, default: false },
@@ -43,8 +39,13 @@ export default {
     inputName: { type: String },
     inputLabel: { type: String },
     placeholder: { type: String },
-    helpId: { type: String },
-    help: { type: String }
+    help: { type: String },
+    content: { type: String }
+  },
+  computed: {
+    helpId: function() {
+      return this.inputId + "Help";
+    }
   }
 };
 </script>

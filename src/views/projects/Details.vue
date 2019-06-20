@@ -1,7 +1,7 @@
 <template>
   <loader class="container-fluid" :endpoint=" '/api/projects/' + id " >
     <template v-slot:content="slotProps">
-          <div class="mx-auto w-50">
+          <div id="detailsContainer" class="mx-auto">
           <youtube-embed :embed-url="slotProps.response.youtubeEmbed"></youtube-embed>
           <carousel class="mt-4" :img-urls="slotProps.response.imgUrls"></carousel>
           <p class="mt-4">{{slotProps.response.description}}</p>
@@ -18,11 +18,17 @@ import carousel from '@/components/Carousel'
 import skeleton from '@/mixins/Skeleton'
 
 export default {
-  mixins: [skeleton],
   props: {id:String},
-  components: {loader,youtubeEmbed,carousel},
-  mounted: function(){
-    console.log('hi')
-  }
+  components: {loader,youtubeEmbed,carousel}
 };
 </script>
+
+
+<style scoped>
+@media (min-width: 768px) {
+  #detailsContainer {
+    width:50%
+  }
+ }
+
+</style>

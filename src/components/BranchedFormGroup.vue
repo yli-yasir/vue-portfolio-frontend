@@ -14,11 +14,9 @@
 
 
   <script>
-  import bindedToDatasetMixin from '@/mixins/BindedToDataset'
 
 export default {
   name: "branched-form-group",
-  mixins: [bindedToDatasetMixin],
   props: ["mainId", "mainLabel", "inputs", "helpId", "help"],
 };
 </script>

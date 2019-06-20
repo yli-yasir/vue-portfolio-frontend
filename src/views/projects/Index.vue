@@ -1,15 +1,15 @@
 <template>
   <loader endpoint="/api/projects" class="index">
     <template v-slot:content="slotProps">
-        <card
-          :isSkeleton="slotProps.isLoading"
-          v-for="item in slotProps.response"
-          :key="item._id"
-          :name="item.name"
-          :thumbnailUrl="item.thumbnailUrl"
-          :description="item.description"
-          :url="/projects/ + item._id"
-        ></card>
+      <card
+        :isSkeleton="slotProps.isLoading"
+        v-for="item in slotProps.response"
+        :key="item._id"
+        :name="item.name"
+        :thumbnailUrl="item.thumbnailUrl"
+        :description="item.description"
+        :url="/projects/ + item._id"
+      ></card>
     </template>
   </loader>
 </template>

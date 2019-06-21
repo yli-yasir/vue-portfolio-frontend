@@ -7,14 +7,10 @@ Vue.use(Router);
 // const emptyProjectForm =
 //   );
 
-// const emptyMemberForm = () =>
-//   import(
-//     /* webpackChunkName: "emptyMemberForm" */ "./views/EmptyMemberForm.vue"
-//   );
-// const editMemberForm = () =>
-//   import(/* webpackChunkName: "editMemberForm" */ "./views/EditMemberForm.vue");
+// const emptyMemberForm =
+// const editMemberForm = 
 // const MemberDetails = () =>
-//   import(/* webpackChunkName: "MemberDetails" */ "./views/MemberDetails.vue");
+
 // const emptyNewsForm = () =>
 //   import(/* webpackChunkName: "emptyNewsForm" */ "./views/EmptyNewsForm.vue");
 // const editNewsForm = () =>
@@ -78,64 +74,58 @@ export default new Router({
           id: route.params.id
         };
       }
+    },
+    //--Members-----
+    {
+      name: "membersIndex",
+      path: "/members",
+      component: () =>
+        import(/* webpackChunkName: "MembersIndex" */ "./views/members/Index")
+    },
+      {
+        name: "newMember",
+        path: "/members/new",
+        component:  () =>
+        import(
+          /* webpackChunkName: "emptyMemberForm" */ "./views/members/Form"
+        )
+      },
+      {
+        name: "editMember",
+        path: "/members/:id/edit",
+        component:() =>
+          import(/* webpackChunkName: "editMemberForm" */ "./views/members/EditForm"),
+        props: route => {
+          return {
+            id: route.params.id
+          };
+        }
+      },
+    {
+      name: "memberDetails",
+      path: "/members/:id",
+      component: () =>
+        import(
+          /* webpackChunkName: "MemberDetails" */ "./views/projects/Details.vue"
+        ),
+      props: route => {
+        return {
+          id: route.params.id
+        };
+      }
+    },
+    {
+      name: "newsDetails",
+      path: "/news/:id",
+      component: () =>
+        import(
+          /* webpackChunkName: "NewsDetails" */ "./views/news/Details"
+        ),
+      props: route => {
+        return {
+          id: route.params.id
+        };
+      }
     }
-    //   //--Members-----
-    //   {
-    //     name: "membersIndex",
-    //     path: "/members",
-    //     component: indexScreen,
-    //     props: function() {
-    //       return { endpoint: "/api/members", routeForSingle: "memberDetails" };
-    //     }
-    //   },
-    //   {
-    //     name: "newMember",
-    //     path: "/members/new",
-    //     component: emptyMemberForm
-    //   },
-    //   {
-    //     name: "editMember",
-    //     path: "/members/:_id/edit",
-    //     component: editMemberForm,
-    //     props: route => {
-    //       return {
-    //         endpoint: "/api/members/" + route.params._id,
-    //         memberId: route.params._id
-    //       };
-    //     }
-    //   },
-    //   {
-    //     name: "memberDetails",
-    //     path: "/members/:_id",
-    //     component: MemberDetails,
-    //     props: route => {
-    //       return {
-    //         endpoint: "/api/members/" + route.params._id,
-    //         routeForSingle: "memberDetails"
-    //       };
-    //     }
-    //   },
-    //   {
-    //     name: "newNews",
-    //     path: "/news/new",
-    //     component: emptyNewsForm
-    //   },
-    //   {
-    //     name: "editNews",
-    //     path: "/news/:_id/edit",
-    //     component: editNewsForm,
-    //     props: route => {
-    //       return {
-    //         endpoint: "/api/news/" + route.params._id,
-    //         newsId: route.params._id
-    //       };
-    //     }
-    //   },
-    //   {
-    //     path: "/about",
-    //     name: "about",
-    //     component: about
-    //   }
-    // ]
   ]
 });

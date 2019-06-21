@@ -1,5 +1,5 @@
 <template>
-  <loader endpoint="/api/projects" class="index">
+  <loader endpoint="/api/members" class="index">
     <template v-slot:content="slotProps">
       <card
         :isSkeleton="slotProps.isLoading"
@@ -8,7 +8,7 @@
         :name="item.name"
         :thumbnailUrl="item.thumbnailUrl"
         :description="item.description"
-        :url="/projects/ + item._id"
+        :url="/members/ + item._id"
       ></card>
     </template>
 

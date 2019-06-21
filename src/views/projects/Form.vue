@@ -14,7 +14,7 @@
       input-name="thumbnailUrl"
       input-label="Thumbnail:"
       placeholder="https://exampleimghosting/xyz.png"
-      help="URL to thumbnail image that will be shown in the project card at the index screen."
+      help="URL to thumbnail image."
       :content="thumbnailUrl"
     ></form-group>
 
@@ -24,7 +24,7 @@
       input-name="description:"
       input-label="Description:"
       placeholder="Red leaves are so beautiful, they remind me of Autmn."
-      help="A Longer description of the project."
+      help="What would you like to say about this?"
       :content="description"
     ></form-group>
 

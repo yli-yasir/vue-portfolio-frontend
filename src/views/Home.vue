@@ -29,6 +29,18 @@
           ></list-group-item>
         </div>
       </template>
+
+      <template v-slot:loading="slotProps">
+                <h1>News</h1>
+        <div class="list-group mb-4">
+          <list-group-item
+            :isSkeleton="true"
+            v-for="(one,index) in 4"
+            :key="one + index"
+          ></list-group-item>
+        </div>
+        </template>
+
     </loader>
   </div>
 </template>

@@ -1,7 +1,8 @@
 <template>
   <div>
     <slot v-if="isError" name="error">Something went wrong while loading the data</slot>
-    <slot v-else name="content" :isLoading="isLoading" :response="response"></slot>
+    <slot v-else-if="isLoading" name="loading">Loading...</slot>
+    <slot v-else name="content" :response="response"></slot>
   </div>
 </template>
 
@@ -12,9 +13,7 @@ export default {
   props: { endpoint: String },
   data: function() {
     return {
-      //initial numerical value for skeleton screens, so if the reponse is not there yet,
-      // we render n empty items
-      response: 3,
+      response: '',
       isLoading: true,
       isSuccess: false,
       isError: false

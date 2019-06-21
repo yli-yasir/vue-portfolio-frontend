@@ -9,20 +9,10 @@
   </loader>
 </template>
 
-<script>
+ <script>
 import loader from '@/components/Loader'
-import youtubeEmbed from '@/components/YoutubeEmbed'
-import carousel from '@/components/Carousel'
-import skeleton from '@/mixins/Skeleton'
-
 export default {
-  props: {id:String},
-  components: {loader,youtubeEmbed,carousel}
-};
-</script>
-
-
-<style scoped>
-
-
-</style>
+  props: {endpoint: String},
+  components: {Loader}
+ }
+ </script>

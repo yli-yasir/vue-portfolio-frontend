@@ -106,7 +106,7 @@ export default new Router({
       path: "/members/:id",
       component: () =>
         import(
-          /* webpackChunkName: "MemberDetails" */ "./views/projects/Details.vue"
+          /* webpackChunkName: "MemberDetails" */ "./views/members/Details"
         ),
       props: route => {
         return {

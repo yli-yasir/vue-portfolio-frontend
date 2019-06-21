@@ -12,7 +12,8 @@
  <script>
 import loader from '@/components/Loader'
 export default {
-  props: {endpoint: String},
-  components: {Loader}
+
+  props: {id : String},
+  components: {loader}
  }
  </script>

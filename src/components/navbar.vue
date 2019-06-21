@@ -10,10 +10,12 @@
   <div class="collapse navbar-collapse" id="navContainer">
 
     <!--nav-->
-    <div class="navbar-nav ml-sm-4">
+    <div class="navbar-nav container-fluid ml-sm-4">
       <router-link data-toggle="collapse" data-target=".navbar-collapse.show" class="nav-item nav-link" to="/home">Home</router-link>
       <router-link data-toggle="collapse" data-target=".navbar-collapse.show" class="nav-item nav-link" to="/projects">Projects</router-link>
       <router-link data-toggle="collapse" data-target=".navbar-collapse.show" class="nav-item nav-link" to="/members">Members</router-link>
+      <router-link data-toggle="collapse" data-target=".navbar-collapse.show" class="ml-sm-auto nav-item nav-link" to="/login">Login</router-link>
+
     </div>
     <!--end of nav-->
 

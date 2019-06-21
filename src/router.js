@@ -8,7 +8,7 @@ Vue.use(Router);
 //   );
 
 // const emptyMemberForm =
-// const editMemberForm = 
+// const editMemberForm =
 // const MemberDetails = () =>
 
 // const emptyNewsForm = () =>
@@ -80,33 +80,52 @@ export default new Router({
       name: "membersIndex",
       path: "/members",
       component: () =>
-        import(/* webpackChunkName: "MembersIndex" */ "./views/members/Index")
+        import(/* webpackChunkName: "membersIndex" */ "./views/members/Index")
     },
-      {
-        name: "newMember",
-        path: "/members/new",
-        component:  () =>
+    {
+      name: "newMember",
+      path: "/members/new",
+      component: () =>
+        import(/* webpackChunkName: "emptyMemberForm" */ "./views/members/Form")
+    },
+    {
+      name: "editMember",
+      path: "/members/:id/edit",
+      component: () =>
         import(
-          /* webpackChunkName: "emptyMemberForm" */ "./views/members/Form"
-        )
-      },
-      {
-        name: "editMember",
-        path: "/members/:id/edit",
-        component:() =>
-          import(/* webpackChunkName: "editMemberForm" */ "./views/members/EditForm"),
-        props: route => {
-          return {
-            id: route.params.id
-          };
-        }
-      },
+          /* webpackChunkName: "editMemberForm" */ "./views/members/EditForm"
+        ),
+      props: route => {
+        return {
+          id: route.params.id
+        };
+      }
+    },
     {
       name: "memberDetails",
       path: "/members/:id",
       component: () =>
         import(
-          /* webpackChunkName: "MemberDetails" */ "./views/members/Details"
+          /* webpackChunkName: "memberDetails" */ "./views/members/Details"
+        ),
+      props: route => {
+        return {
+          id: route.params.id
+        };
+      }
+    },
+    {
+      name: "newNews",
+      path: "/news/new",
+      component: () =>
+        import(/* webpackChunkName: "emptyNewsForm" */ "./views/news/Form")
+    },
+    {
+      name: "editNew",
+      path: "/news/:id/edit",
+      component: () =>
+        import(
+          /* webpackChunkName: "editNewsForm" */ "./views/news/EditForm"
         ),
       props: route => {
         return {
@@ -118,9 +137,7 @@ export default new Router({
       name: "newsDetails",
       path: "/news/:id",
       component: () =>
-        import(
-          /* webpackChunkName: "NewsDetails" */ "./views/news/Details"
-        ),
+        import(/* webpackChunkName: "newsDetails" */ "./views/news/Details"),
       props: route => {
         return {
           id: route.params.id

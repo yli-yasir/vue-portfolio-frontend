@@ -26,6 +26,7 @@
             :key="item._id"
             :heading="item.name"
             :description="item.description"
+            :url="'/news/' + item._id"
           ></list-group-item>
         </div>
       </template>

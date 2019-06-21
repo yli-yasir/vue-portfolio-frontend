@@ -1,5 +1,5 @@
 <template>
-  <a href="#" :class="{skeleton: isSkeleton}" class="list-group-item list-group-item-action flex-column align-items-start">
+  <a :href="url" :class="{skeleton: isSkeleton}" class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1">{{heading}}</h5>
       <small>{{date}}</small>
@@ -15,7 +15,7 @@ import skeleton from '@/mixins/Skeleton'
 export default {
     mixins: [skeleton],
     props:{
-        baseRouteToItem: String,
+        url: String,
         heading: String,
         date: String,
         description: String,

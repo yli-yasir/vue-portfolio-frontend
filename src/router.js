@@ -143,6 +143,12 @@ export default new Router({
           id: route.params.id
         };
       }
+    },
+    {
+      name: "login",
+      path: "/login",
+      component: () =>
+        import(/* webpackChunkName: "loginForm" */ "./views/Login"),
     }
   ]
 });

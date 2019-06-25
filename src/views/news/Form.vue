@@ -12,7 +12,7 @@
     <form-group
       :text-area="true"
       input-id="descriptionInput"
-      input-name="description:"
+      input-name="description"
       input-label="Description:"
       placeholder="It's an amazing game..."
       help="What would you like to say about this?"

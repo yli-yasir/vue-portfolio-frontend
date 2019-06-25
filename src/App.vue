@@ -1,17 +1,36 @@
 <template>
-  <div id="app">
-      <navbar></navbar>
-      <router-view class="content"/>
+  <div  id="app">
+      <navbar :username="username"></navbar>
+      <router-view v-on:login="handleLogin" class="content"/>
   </div>
 </template>
 
 <script> 
 import navbar from '@/components/Navbar'
-
+import axios from 'axios'
 export default {
+  data: function(){
+    return{
+    username: null}
+  },
 components: {
   navbar
+},
+methods: {
+  handleLogin: function(username){
+    this.username = username
+  }
+},
+mounted: async function(){
+  try{
+var response = await axios.get('/api/users/login');
+this.username = response.data;
+  }
+  catch(e){
+    console.log(e)
+  }
 }
+
 }
 </script>
 

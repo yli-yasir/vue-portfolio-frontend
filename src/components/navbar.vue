@@ -14,7 +14,8 @@
       <router-link data-toggle="collapse" data-target=".navbar-collapse.show" class="nav-item nav-link" to="/home">Home</router-link>
       <router-link data-toggle="collapse" data-target=".navbar-collapse.show" class="nav-item nav-link" to="/projects">Projects</router-link>
       <router-link data-toggle="collapse" data-target=".navbar-collapse.show" class="nav-item nav-link" to="/members">Members</router-link>
-      <router-link data-toggle="collapse" data-target=".navbar-collapse.show" class="ml-sm-auto nav-item nav-link" to="/login">Login</router-link>
+      <span v-if="username"  id="welcome" class="ml-sm-auto nav-item">Welcome, {{username}}</span>
+      <router-link v-else data-toggle="collapse" data-target=".navbar-collapse.show" class="ml-sm-auto nav-item nav-link" to="/login">Login</router-link>
 
     </div>
     <!--end of nav-->
@@ -28,7 +29,8 @@
 
 <script>
 export default {
-  name: "navbar"
+  name: "navbar",
+  props: {username: String}
 };
 </script>
 
@@ -50,5 +52,10 @@ export default {
   color:white;
 }
 
-
+#welcome{
+  color: rgba(255,255,255,0.75);
+  padding: 0.9rem  0.5rem;
+  font-size: 1rem;
+  text-transform: uppercase
+  }
 </style>

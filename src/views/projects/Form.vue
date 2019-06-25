@@ -21,7 +21,7 @@
     <form-group
       :text-area="true"
       input-id="descriptionInput"
-      input-name="description:"
+      input-name="description"
       input-label="Description:"
       placeholder="Red leaves are so beautiful, they remind me of Autmn."
       help="What would you like to say about this?"

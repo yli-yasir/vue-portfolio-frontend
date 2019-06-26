@@ -25,14 +25,9 @@ import axios from "axios"
 
 export default {
   methods: {
-        submit: async function() {
+        submit:function() {
       var formData = new FormData(document.querySelector("form"));
-      try {
-        var response = await axios.post("api/users/login",formData);
-        this.$emit('login',response.data)
-      } catch (e) {
-        console.log(e);
-      }
+      this.$emit('login',formData);
     }
   }
   ,

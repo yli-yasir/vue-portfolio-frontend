@@ -14,7 +14,10 @@
       <router-link data-toggle="collapse" data-target=".navbar-collapse.show" class="nav-item nav-link" to="/home">Home</router-link>
       <router-link data-toggle="collapse" data-target=".navbar-collapse.show" class="nav-item nav-link" to="/projects">Projects</router-link>
       <router-link data-toggle="collapse" data-target=".navbar-collapse.show" class="nav-item nav-link" to="/members">Members</router-link>
-      <span v-if="username"  id="welcome" class="ml-sm-auto nav-item">Welcome, {{username}}</span>
+      <template v-if="username">
+      <span id="welcome" class="ml-sm-auto nav-item">Welcome, {{username}}</span>
+      <span id="logout" @click="$emit('logout')" data-toggle="collapse" data-target=".navbar-collapse.show" class="nav-item nav-link">Logout</span>
+      </template>
       <router-link v-else data-toggle="collapse" data-target=".navbar-collapse.show" class="ml-sm-auto nav-item nav-link" to="/login">Login</router-link>
 
     </div>
@@ -56,6 +59,9 @@ export default {
   color: rgba(255,255,255,0.75);
   padding: 0.9rem  0.5rem;
   font-size: 1rem;
-  text-transform: uppercase
+  }
+
+  #logout:hover{
+    cursor:pointer;
   }
 </style>

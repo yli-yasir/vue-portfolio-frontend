@@ -1,7 +1,7 @@
 <template>
   <div  id="app">
-      <navbar :username="username"></navbar>
-      <router-view v-on:login="handleLogin" class="content"/>
+      <navbar v-on:logout="handleLogout" :username="username"></navbar>
+      <router-view :isLoggedIn="Boolean(username)" v-on:login="handleLogin" class="content"/>
   </div>
 </template>
 
@@ -17,8 +17,25 @@ components: {
   navbar
 },
 methods: {
-  handleLogin: function(username){
-    this.username = username
+  handleLogin: async function(formData){
+        try {
+        var response = await axios.post("api/users/login",formData);
+        this.username = response.data;
+        this.$router.push('/')    
+      } catch (e) {
+        console.log(e);
+      }
+    
+  },
+  handleLogout: async function(){
+    try{
+      var response = await axios.post("api/users/logout");
+      this.username = null
+    }
+    catch(e){
+      console.log(e)
+    }
+    
   }
 },
 mounted: async function(){

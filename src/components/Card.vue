@@ -7,7 +7,10 @@
         <h3 class="card-title">{{name}}</h3>
         <p>{{description}}</p>
       </div>
-      <router-link v-if="!isSkeleton" :to="url" class="btn card-btn btn-primary">More</router-link>
+      <template v-if="!isSkeleton">
+      <router-link  :to="url" class="btn card-btn btn-primary">More</router-link>
+      <router-link v-if="secondaryUrl" :to="secondaryUrl" class=" ml-4 btn card-btn btn-warning">{{secondaryUrlLabel}}</router-link>
+      </template>
       <div v-else class="skeleton" id="btnSkeleton"></div>
     </div>
   </div>
@@ -21,7 +24,9 @@ export default {
     thumbnailUrl: String,
     name: String,
     description: String,
-    url: String
+    url: String,
+    secondaryUrl: String,
+    secondaryUrlLabel: String
   }
 };
 </script>

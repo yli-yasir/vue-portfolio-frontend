@@ -8,7 +8,9 @@
         :name="item.name"
         :thumbnailUrl="item.thumbnailUrl"
         :description="item.description"
-        :url="/members/ + item._id"
+        :url="'/members/' + item._id"
+        :secondaryUrl=" isLoggedIn? '/members/' + item._id + '/edit' : '' "
+        secondaryUrlLabel="Edit"
       ></card>
     </template>
 
@@ -26,12 +28,13 @@
 <script>
 import card from "@/components/Card";
 import loader from "@/components/Loader";
-
+import loggedIn from "@/mixins/LoggedIn"
 export default {
   name: "index-screen",
   components: {
     card,
     loader
-  }
+  },
+  mixins: [loggedIn]
 };
 </script>

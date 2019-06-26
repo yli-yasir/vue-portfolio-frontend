@@ -54,7 +54,8 @@ import listGroupItem from "@/components/ListGroupItem";
 // @ is an alias to /src
 export default {
   name: "home",
-  components: { loader, listGroupItem }
+  components: { loader, listGroupItem },
+
 };
 </script>
 

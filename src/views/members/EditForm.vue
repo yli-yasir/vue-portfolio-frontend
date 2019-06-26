@@ -1,6 +1,7 @@
 <template>
 <loader class="container" :endpoint="'/api/members/' + id">
 <template v-slot:content="slotProps">
+<h1 class="mb-4">Editing Member: {{slotProps.response.name}}</h1>
 <member-form 
 method="post"
 :action="'/api/members/' + id + '?_method=PUT' "

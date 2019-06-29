@@ -19,7 +19,7 @@ components: {
 methods: {
   handleLogin: async function(formData){
         try {
-        var response = await axios.post("api/users/login",formData);
+        var response = await axios.post("/api/users/login",formData);
         this.username = response.data;
         this.$router.push('/')    
       } catch (e) {
@@ -29,7 +29,7 @@ methods: {
   },
   handleLogout: async function(){
     try{
-      var response = await axios.post("api/users/logout");
+      var response = await axios.post("/api/users/logout");
       this.username = null
     }
     catch(e){

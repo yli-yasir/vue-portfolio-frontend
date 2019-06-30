@@ -1,5 +1,5 @@
 <template>
-  <form class="container" method="post" :action="action">
+  <form class="container">
   <form-group
       input-id="nameInput"
       input-name="name"
@@ -28,22 +28,38 @@
       :content="description"
     ></form-group>
 
-    <button type="submit" class="mb-4 btn btn-primary">Submit</button>
+    <button @click="submitMember" type="button" class="mb-4 btn btn-primary">Submit</button>
   </form>
 </template>
 
 
 <script>
 import formGroup from "@/components/FormGroup";
+import axios from 'axios';
 
 export default {
   props: {
     action: {type: String, default:'/api/members'},
+    method: {type: String, default:'post'},
     name: String,
     thumbnailUrl: String,
     description: String
   },
-  components: {formGroup}
+  components: {formGroup},
+  methods: {
+        submitMember: async function() {
+      try {
+        await axios({
+          method: this.method,
+          url: this.action,
+          data: new FormData(document.querySelector("form"))
+        });
+        this.$router.push("/members");
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  }
 
 };
 </script>

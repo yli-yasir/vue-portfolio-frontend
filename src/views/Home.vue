@@ -18,6 +18,9 @@
 
     <loader class="col-md-4" endpoint="api/news">
       <template v-slot:content="slotProps">
+      <div v-if="isLoggedIn" class="d-flex flex-row-reverse">
+        <router-link :to="{name: 'newNews'}" class="btn btn-primary mr-4">New News</router-link>
+      </div>
         <h1>News</h1>
         <div class="list-group mb-4">
           <list-group-item
@@ -50,11 +53,12 @@
 <script>
 import loader from "@/components/Loader";
 import listGroupItem from "@/components/ListGroupItem";
-
+import loggedIn from '@/mixins/LoggedIn'
 // @ is an alias to /src
 export default {
   name: "home",
   components: { loader, listGroupItem },
+  mixins: [loggedIn]
 
 };
 </script>

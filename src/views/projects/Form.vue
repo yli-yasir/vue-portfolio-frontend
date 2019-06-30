@@ -131,7 +131,7 @@ export default {
     },
     submitProject: async function() {
       try {
-        axios({
+        await axios({
           method: this.method,
           url: this.action,
           data: new FormData(document.querySelector("form"))

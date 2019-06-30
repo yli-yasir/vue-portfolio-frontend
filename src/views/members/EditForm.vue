@@ -3,8 +3,8 @@
 <template v-slot:content="slotProps">
 <h1 class="mb-4">Editing Member: {{slotProps.response.name}}</h1>
 <member-form 
-method="post"
-:action="'/api/members/' + id + '?_method=PUT' "
+:action="'/api/members/' + id"
+method="put"
 :name="slotProps.response.name"
 :thumbnailUrl="slotProps.response.thumbnailUrl"
 :description="slotProps.response.description"

@@ -1,5 +1,5 @@
 <template>
-  <form class="container" method="post" :action="action">
+  <form class="container">
     <form-group
       input-id="nameInput"
       input-name="name"
@@ -75,7 +75,7 @@
       @click="addContributor"
     >Add more contributors</button>
 
-    <button type="submit" class="my-4 btn btn-primary">Submit</button>
+    <button type="button" @click="submitProject" class="my-4 btn btn-primary">Submit</button>
   </form>
 </template>
 
@@ -83,11 +83,12 @@
 <script>
 import formGroup from "@/components/FormGroup";
 import keygen from "@/mixins/KeyGen";
-
+import axios from "axios";
 export default {
   mixins: [keygen],
   props: {
-    action: {type: String, default: '/api/projects' },
+    action: { type: String, default: "/api/projects" },
+    method: { type: String, default: "post" },
     //these are for the content of the fields, this enables the form to be
     //supplied with initial values, this is useful when editing the form
     //as it allows the fields to be preloaded with information
@@ -95,31 +96,52 @@ export default {
     thumbnailUrl: String,
     description: String,
     youtubeEmbed: String,
-    imgUrls: { type: Array, default:()=> [""] },
-    contributors: { type: Array, default:()=> [{ name: "", role: "" }] }
+    imgUrls: { type: Array, default: () => [""] },
+    contributors: { type: Array, default: () => [{ name: "", role: "" }] }
   },
-  methods: {
-    addImgUrl: function(){
-      this.imgUrls.push({url:'',key:this.genKey('imgurl')})
-    },
-    addContributor: function(){
-      this.contributors.push({name:"",role:"",key: this.genKey('contributor')})
-    },
-  },
-  created: function(){
+  created: function() {
     //once the component is created iterate over the items which do not have a key,
     //and patch them with a key to enable them for rendering with v-for
-    var vueInstance = this; 
-    this.imgUrls.forEach(function(imgUrl,index){   
-      vueInstance.$set(vueInstance.imgUrls,index,{url:imgUrl,key: vueInstance.genKey('imgUrl')})
-    })
+    var vueInstance = this;
+    this.imgUrls.forEach(function(imgUrl, index) {
+      vueInstance.$set(vueInstance.imgUrls, index, {
+        url: imgUrl,
+        key: vueInstance.genKey("imgUrl")
+      });
+    });
 
-
-    this.contributors.forEach(function(contributor,index){   
-      vueInstance.$set(vueInstance.contributors,index,{name:contributor.name,role: contributor.role,key: vueInstance.genKey('contributor')})
-    })
+    this.contributors.forEach(function(contributor, index) {
+      vueInstance.$set(vueInstance.contributors, index, {
+        name: contributor.name,
+        role: contributor.role,
+        key: vueInstance.genKey("contributor")
+      });
+    });
   },
-  components: {formGroup}
-
+  methods: {
+    addImgUrl: function() {
+      this.imgUrls.push({ url: "", key: this.genKey("imgurl") });
+    },
+    addContributor: function() {
+      this.contributors.push({
+        name: "",
+        role: "",
+        key: this.genKey("contributor")
+      });
+    },
+    submitProject: async function() {
+      try {
+        axios({
+          method: this.method,
+          url: this.action,
+          data: new FormData(document.querySelector("form"))
+        });
+        this.$router.push("/projects");
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  },
+  components: { formGroup }
 };
 </script>

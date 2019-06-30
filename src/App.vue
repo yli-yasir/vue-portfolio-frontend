@@ -39,6 +39,7 @@ methods: {
   }
 },
 mounted: async function(){
+  //check if the user is logged in
   try{
 var response = await axios.get('/api/users/login');
 this.username = response.data;

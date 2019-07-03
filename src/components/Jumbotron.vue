@@ -4,7 +4,7 @@
   <p class="lead">{{lead}}</p>
   <hr class="my-4">
   <p>{{content}}</p>
-  <a class="btn btn-primary btn-lg" :href="url" role="button">Learn more</a>
+  <router-link class="btn btn-primary btn-lg" :to="url" role="button">Learn more</router-link>
 </div>
 </template>
 

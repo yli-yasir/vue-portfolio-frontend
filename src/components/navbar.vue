@@ -99,7 +99,7 @@ export default {
   text-transform: uppercase;
 }
 .router-link-active {
-  color: white;
+  color: white !important;
 }
 
 #welcome {

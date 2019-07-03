@@ -66,7 +66,6 @@ html, body, #app {
 .index {
   display: flex;
   justify-content: space-evenly;
-  align-items: baseline;
   flex-flow: row wrap;
 }
 

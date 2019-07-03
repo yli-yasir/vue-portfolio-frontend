@@ -1,12 +1,14 @@
 <template>
   <loader class="container-fluid" :endpoint=" '/api/projects/' + id ">
     <template v-slot:content="slotProps">
-      <div class="detailsContainer mx-auto">
+      <div class="detailsContainer mx-auto mb-4">
         <h1 class="text-center">{{slotProps.response.name}}</h1>
         <control-bar v-if="isLoggedIn" basePath="/projects" :id="id"></control-bar>
-        <youtube-embed :embed-url="slotProps.response.youtubeEmbed"></youtube-embed>
-        <carousel class="mt-4" :img-urls="slotProps.response.imgUrls"></carousel>
-        <p class="mt-4">{{slotProps.response.description}}</p>
+        <youtube-embed v-if="slotProps.response.youtubeEmbed" :embed-url="slotProps.response.youtubeEmbed"></youtube-embed>
+        <carousel v-if="slotProps.response.imgUrls" class="mt-4" :img-urls="slotProps.response.imgUrls"></carousel>
+        <h3 class="mt-4">About:</h3>
+        <p>{{slotProps.response.description}}</p>
+        <h3>Contributors:</h3>
         <p
           v-for="contrib in slotProps.response.contributors"
           :key="contrib._id"

@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid row">
-    <div class="col-md-8 about">
+    <div class="col-md-7 about">
       <h1>Y-Li</h1>
       <cite>
         “To live is not to breathe but to act.
@@ -16,7 +16,7 @@
       >We are a group of people aiming to learn and grow by tackling real world problems. Solutions don't have to be complicated, simple things can bring big change!</p>
     </div>
 
-    <loader class="col-md-4" endpoint="api/news">
+    <loader class="col-md-5" endpoint="api/news">
       <template v-slot:content="slotProps">
       <div v-if="isLoggedIn" class="d-flex flex-row-reverse">
         <router-link :to="{name: 'newNews'}" class="btn btn-primary mr-4">New News</router-link>
@@ -30,6 +30,8 @@
             :heading="item.name"
             :description="item.description"
             :url="'/news/' + item._id"
+            :upperNote="'Posted: ' + new Date(item.createdAt).toLocaleString('en-GB')"
+            :lowerNote="'Last Edit: ' + new Date(item.updatedAt).toLocaleString('en-GB')"
           ></list-group-item>
         </div>
       </template>

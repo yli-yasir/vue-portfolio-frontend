@@ -4,7 +4,6 @@
       <div class="detailsContainer mx-auto">
         <h1 class="text-center">{{slotProps.response.name}}</h1>
         <control-bar v-if="isLoggedIn" basePath="/members" :id="id"></control-bar>
-
         <p class="mt-4">{{slotProps.response.description}}</p>
       </div>
     </template>

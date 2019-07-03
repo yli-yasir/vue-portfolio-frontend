@@ -2,10 +2,10 @@
   <a :href="url" :class="{skeleton: isSkeleton}" class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1">{{heading}}</h5>
-      <small>{{date}}</small>
+      <small>{{upperNote}}</small>
     </div>
     <p class="mb-1">{{description}}</p>
-    <small>{{footer}}</small>
+    <small>{{lowerNote}}</small>
   </a>
 </template>
 
@@ -17,9 +17,9 @@ export default {
     props:{
         url: String,
         heading: String,
-        date: String,
+        upperNote: String,
         description: String,
-        footer: String
+        lowerNote: String
     }
 }
 </script>
@@ -29,7 +29,7 @@ export default {
 $skeleton-bg : rgba(black,0.1);
 
 .list-group-item{
-    &:nth-child(2){
+    &:nth-child(even){
     background-color: var(--primary);
     color: white;
   }

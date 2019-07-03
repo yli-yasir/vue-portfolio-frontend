@@ -11,7 +11,7 @@
       :id="inputId"
       :aria-describedby="helpId"
       :placeholder="placeholder"
-      v-model="content"
+      v-model="ownContent"
     ></textarea>
 
     <input
@@ -32,6 +32,13 @@
 <script>
 export default {
   name: "form-group",
+  data: function(){
+    //Because we are using v-model above in the textarea, we can't use prop content directly
+    //or else we will get a vue warning, so here a value is created for content based on the prop
+    return {
+      ownContent: ''
+    }
+  },
   props: {
     inputType: { type: String, default: "text" },
     textArea: { type: Boolean, default: false },
@@ -46,6 +53,9 @@ export default {
     helpId: function() {
       return this.inputId + "Help";
     }
+  },
+  mounted: function() {
+    this.ownContent = this.content;
   }
 };
 </script>

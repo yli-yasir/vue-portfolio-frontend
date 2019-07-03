@@ -29,7 +29,7 @@
             :key="item._id"
             :heading="item.name"
             :description="item.description"
-            :url="'/news/' + item._id"
+            :url=" '/news/' + item._id"
             :upperNote="'Posted: ' + new Date(item.createdAt).toLocaleString('en-GB')"
             :lowerNote="'Last Edit: ' + new Date(item.updatedAt).toLocaleString('en-GB')"
           ></list-group-item>

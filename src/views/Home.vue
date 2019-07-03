@@ -8,9 +8,9 @@
         ourselves which give us the sentiment of our existence. The man who has lived the
         most is not he who has counted the most years but he who has most felt life.”
       </cite>
-      <br>
+      <br />
       <small class="mt-2 text-muted">― Jean-Jacques Rousseau, Emile or On Education</small>
-      <hr>
+      <hr />
       <p
         class="mt-2"
       >We are a group of people aiming to learn and grow by tackling real world problems. Solutions don't have to be complicated, simple things can bring big change!</p>
@@ -18,10 +18,12 @@
 
     <loader class="col-md-5" endpoint="api/news">
       <template v-slot:content="slotProps">
-      <div v-if="isLoggedIn" class="d-flex flex-row-reverse">
-        <router-link :to="{name: 'newNews'}" class="btn btn-primary mr-4">New News</router-link>
-      </div>
-        <h1>News</h1>
+        <div v-if="isLoggedIn" class="d-flex flex-row-reverse">
+          <router-link :to="{name: 'newNews'}" class="btn btn-primary mr-4">New News</router-link>
+        </div>
+        <h1>
+          <span class="fas fa-newspaper mr-2"></span>News
+        </h1>
         <div class="list-group mb-4">
           <list-group-item
             :isSkeleton="slotProps.isLoading"
@@ -37,16 +39,13 @@
       </template>
 
       <template v-slot:loading="slotProps">
-                <h1>News</h1>
+        <h1>
+          <span class="fas fa-newspaper mr-2"></span>News
+        </h1>
         <div class="list-group mb-4">
-          <list-group-item
-            :isSkeleton="true"
-            v-for="(one,index) in 4"
-            :key="one + index"
-          ></list-group-item>
+          <list-group-item :isSkeleton="true" v-for="(one,index) in 4" :key="one + index"></list-group-item>
         </div>
-        </template>
-
+      </template>
     </loader>
   </div>
 </template>
@@ -55,13 +54,12 @@
 <script>
 import loader from "@/components/Loader";
 import listGroupItem from "@/components/ListGroupItem";
-import loggedIn from '@/mixins/LoggedIn'
+import loggedIn from "@/mixins/LoggedIn";
 // @ is an alias to /src
 export default {
   name: "home",
   components: { loader, listGroupItem },
   mixins: [loggedIn]
-
 };
 </script>
 

@@ -12,6 +12,7 @@
       :aria-describedby="helpId"
       :placeholder="placeholder"
       v-model="ownContent"
+      style="height:250px"
     ></textarea>
 
     <input

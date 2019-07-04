@@ -73,5 +73,6 @@ html, body, #app {
   .detailsContainer {
     width:50%
   }
+
  }
 </style>

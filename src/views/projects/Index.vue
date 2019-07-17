@@ -1,9 +1,11 @@
 <template>
   <loader endpoint="/api/projects">
     <template v-slot:content="slotProps">
+      <!--
       <div v-if="isLoggedIn" class="mb-2 d-flex flex-row-reverse">
         <router-link :to="{name: 'newProject'}" class="btn btn-primary mr-4">New Project</router-link>
       </div>
+      -->
       <div class="index">
         <jumbotron
           v-for="item in slotProps.response"
@@ -33,15 +35,14 @@
 <script>
 import card from "@/components/Card";
 import loader from "@/components/Loader";
-import loggedIn from "@/mixins/LoggedIn";
 import jumbotron from "@/components/Jumbotron";
+
 export default {
   name: "index-screen",
   components: {
     jumbotron,
     card,
     loader
-  },
-  mixins: [loggedIn]
+  }
 };
 </script>

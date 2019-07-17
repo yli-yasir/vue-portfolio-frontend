@@ -2,7 +2,9 @@
   <loader class="container-fluid" :endpoint=" '/api/news/' + id ">
     <template v-slot:content="slotProps">
       <div class="detailsContainer mx-auto">
+        <!--
         <control-bar v-if="isLoggedIn" basePath="/news" :id="id"></control-bar>
+        -->
         <h1 class="text-center">{{slotProps.response.name}}</h1>
         <div class="d-flex flex-row-reverse">
           <small>
@@ -18,10 +20,9 @@
 
  <script>
 import loader from "@/components/Loader";
-import loggedIn from "@/mixins/LoggedIn";
 import controlBar from "@/components/ControlBar";
+
 export default {
-  mixins: [loggedIn],
   props: { id: String },
   components: { loader, controlBar }
 };

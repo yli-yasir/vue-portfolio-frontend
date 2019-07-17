@@ -29,7 +29,7 @@ import formGroup from "@/components/FormGroup";
 import axios from 'axios'
 export default {
   props: {
-    action: {type: String, default:'/api/news'},
+    action: {type: String, default:'/api/milestones'},
     method: {type: String, default: 'post'},
     name: String,
     description: String

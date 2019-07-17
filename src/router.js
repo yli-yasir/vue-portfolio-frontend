@@ -1,21 +1,20 @@
 import Vue from "vue";
 import Router from "vue-router";
 import homeView from "./views/Home.vue";
+import projectsIndex from './views/projects/Index'
+import projectDetails from './views/projects/Details'
+import projectForm from './views/projects/Form'
+import editProjectForm from './views/projects/EditForm'
+import articlesIndex from './views/articles/Index'
+import articleDetails from './views/articles/Details'
+import articlesForm from './views/articles/Form'
+import editArticlesForm from './views/articles/EditForm'
+import milestoneDetails from './views/milestones/Details'
+import mileStoneForm from './views/milestones/Form'
+import editMileStoneForm from './views/milestones/EditForm'
+import loginForm from './views/Login'
 
 Vue.use(Router);
-
-// const emptyProjectForm =
-//   );
-
-// const emptyMemberForm =
-// const editMemberForm =
-// const MemberDetails = () =>
-
-// const emptyNewsForm = () =>
-//   import(/* webpackChunkName: "emptyNewsForm" */ "./views/EmptyNewsForm.vue");
-// const editNewsForm = () =>
-//   import(/* webpackChunkName: "editNewsForm" */ "./views/EditNewsForm.vue");
-// const about = () => import(/* webpackChunkName: "about" */ "./views/About.vue");
 
 export default new Router({
   mode: "history",
@@ -35,27 +34,17 @@ export default new Router({
     {
       name: "projectsIndex",
       path: "/projects",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited;
-      component: () =>
-        import(/* webpackChunkName: "projectsIndex" */ "./views/projects/Index")
+      component: projectsIndex
     },
     {
       name: "newProject",
       path: "/projects/new",
-      component: () =>
-        import(
-          /* webpackChunkName: "emptyProjectForm" */ "./views/projects/Form"
-        )
+      component: projectForm
     },
     {
       name: "editProject",
       path: "/projects/:id/edit",
-      component: () =>
-        import(
-          /* webpackChunkName: "editProjectForm" */ "./views/projects/EditForm"
-        ),
+      component: editProjectForm,
       props: route => {
         return {
           id: route.params.id
@@ -65,36 +54,28 @@ export default new Router({
     {
       name: "projectDetails",
       path: "/projects/:id",
-      component: () =>
-        import(
-          /* webpackChunkName: "projectDetails" */ "./views/projects/Details"
-        ),
+      component: projectDetails,
       props: route => {
         return {
           id: route.params.id
         };
       }
     },
-    //--Members-----
+    //--articles-----
     {
-      name: "membersIndex",
-      path: "/members",
-      component: () =>
-        import(/* webpackChunkName: "membersIndex" */ "./views/members/Index")
+      name: "articlesIndex",
+      path: "/articles",
+      component: articlesIndex
     },
     {
-      name: "newMember",
-      path: "/members/new",
-      component: () =>
-        import(/* webpackChunkName: "emptyMemberForm" */ "./views/members/Form")
+      name: "newArticle",
+      path: "/articles/new",
+      component: articlesForm
     },
     {
-      name: "editMember",
-      path: "/members/:id/edit",
-      component: () =>
-        import(
-          /* webpackChunkName: "editMemberForm" */ "./views/members/EditForm"
-        ),
+      name: "editArticle",
+      path: "/articles/:id/edit",
+      component: editArticlesForm,
       props: route => {
         return {
           id: route.params.id
@@ -102,12 +83,9 @@ export default new Router({
       }
     },
     {
-      name: "memberDetails",
-      path: "/members/:id",
-      component: () =>
-        import(
-          /* webpackChunkName: "memberDetails" */ "./views/members/Details"
-        ),
+      name: "ArticleDetails",
+      path: "/articles/:id",
+      component: articleDetails,
       props: route => {
         return {
           id: route.params.id
@@ -115,18 +93,14 @@ export default new Router({
       }
     },
     {
-      name: "newNews",
-      path: "/news/new",
-      component: () =>
-        import(/* webpackChunkName: "emptyNewsForm" */ "./views/news/Form")
+      name: "newMilestone",
+      path: "/milestones/new",
+      component: mileStoneForm
     },
     {
-      name: "editNew",
-      path: "/news/:id/edit",
-      component: () =>
-        import(
-          /* webpackChunkName: "editNewsForm" */ "./views/news/EditForm"
-        ),
+      name: "editMilestone",
+      path: "/milestones/:id/edit",
+      component: editMileStoneForm,
       props: route => {
         return {
           id: route.params.id
@@ -134,10 +108,10 @@ export default new Router({
       }
     },
     {
-      name: "newsDetails",
-      path: "/news/:id",
-      component: () =>
-        import(/* webpackChunkName: "newsDetails" */ "./views/news/Details"),
+      name: "milestoneDetails",
+      path: "/milestones/:id",
+      component: 
+        milestoneDetails,
       props: route => {
         return {
           id: route.params.id
@@ -147,8 +121,8 @@ export default new Router({
     {
       name: "login",
       path: "/login",
-      component: () =>
-        import(/* webpackChunkName: "loginForm" */ "./views/Login"),
+      component: 
+        loginForm
     }
   ]
 });

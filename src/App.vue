@@ -1,5 +1,5 @@
 <template>
-  <div  id="app">
+  <div id="app">
       <navbar v-on:logout="handleLogout" :username="username"></navbar>
       <router-view :isLoggedIn="Boolean(username)" v-on:login="handleLogin" class="content"/>
   </div>
@@ -23,6 +23,7 @@ methods: {
         this.username = response.data;
         this.$router.push('/')    
       } catch (e) {
+        console.log('hi')
         console.log(e);
       }
     
@@ -41,7 +42,7 @@ methods: {
 mounted: async function(){
   //check if the user is logged in
   try{
-var response = await axios.get('/api/users/login');
+let response = await axios.get('/api/users/login');
 this.username = response.data;
   }
   catch(e){

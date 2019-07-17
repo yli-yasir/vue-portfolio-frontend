@@ -1,15 +1,17 @@
+<!-- if all props of this element are empty, then it's returned as a skeleton
+-->
 <template>
   <router-link
-    :to="url"
+    :to=" !url ? '#' : url"
     :class="{skeleton: isSkeleton}"
     class="list-group-item list-group-item-action flex-column align-items-start"
   >
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1">{{heading}}</h5>
-      <small>{{upperNote}}</small>
+      <small v-if="!isSkeleton">{{upperNote}}</small>
     </div>
     <p class="mb-1">{{description}}</p>
-    <small>{{lowerNote}}</small>
+    <small v-if="!isSkeleton">{{lowerNote}}</small>
   </router-link>
 </template>
 
@@ -26,8 +28,9 @@ export default {
   },
   computed: {
     isSkeleton() {
+
       //it's a skeleton if all it's props are falsy i.e empty strings
-      return !this.url && !this.heading && !this.upperNote && !this.desciption && !this.lowerNote;
+      return !this.url && !this.heading && !this.upperNote && !this.description && !this.lowerNote;
     }
   }
 };

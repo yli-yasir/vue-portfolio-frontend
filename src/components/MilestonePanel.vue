@@ -1,36 +1,44 @@
 <template>
-<div>
-  <h1>
-    <span class="fas fa-flag mr-2"></span>Milestones
-  </h1>
-  <loader endpoint="/api/milestones">
-  <template v-slot:content="slotProps">
-  <div class="list-group mb-4">
-    <list-group-item
-      v-for="item in slotProps.response"
-      :key="item._id"
-      :heading="item.name"
-      :description="item.description"
-      :url=" '/milestones/' + item._id"
-      :upperNote="'Posted: ' + new Date(item.createdAt).toLocaleString('en-GB')"
-      :lowerNote="'Last Edit: ' + new Date(item.updatedAt).toLocaleString('en-GB')"
-    ></list-group-item>
-  </div>
-  </template>
-  </loader>
+  <div>
+    <h1>
+      <span class="fas fa-flag mr-2"></span>Milestones
+    </h1>
+    <loader endpoint="/api/milestones">
+      <template v-slot:content="slotProps">
+        <div class="list-group mb-4">
+          <list-group
+            :dataset="mileStonesToGroupItems(slotProps.responseData)"
+          ></list-group>
+        </div>
+      </template>
+    </loader>
   </div>
 </template>
 
 
 <script>
-import listGroupItem from '@/components/ListGroupItem'
-import loader from '@/components/Loader'
+import loader from "@/components/Loader";
+import listGroup from "@/components/ListGroup";
+
+//make an empty dummy item to force listGroupItem to render as a skeleton
 
 export default {
-    props: {
-      items: Array
-    },
-    components: {listGroupItem,loader}
-}
+  components: { listGroup, loader },
+  methods: {
+    mileStonesToGroupItems(milestones) {
+      if (milestones !==null){
+      return milestones.map((milestone) => {
+        return {
+          key: milestone._id,
+          upperNote: new Date(milestone.createdAt).toLocaleString('en-GB'),
+          lowerNote: new Date(milestone.updatedAt).toLocaleString('en-GB'),
+          url: `/milestones/${milestone._id}`,
+          description: milestone.description,
+          heading: milestone.name  
+        };
+      });
+    }}
+  }
+};
 </script>
 

@@ -38,7 +38,7 @@ export default {
         this.responseData = response.data;
         console.log(`loaded from ${this.endpoint}:`);
         console.log(response.data);
-        this.isLoading = true;
+        this.isLoading = false;
         this.isSuccess = true;
       } catch (err) {
         this.isError = true;

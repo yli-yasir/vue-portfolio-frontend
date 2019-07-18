@@ -25,13 +25,15 @@ import listGroup from "@/components/ListGroup";
 export default {
   components: { listGroup, loader },
   methods: {
+    //map each mileStone to a groupItem
+    //and return an array of group items made from the milestones
     mileStonesToGroupItems(milestones) {
-      if (milestones !==null){
+      if (milestones){
       return milestones.map((milestone) => {
         return {
           key: milestone._id,
-          upperNote: new Date(milestone.createdAt).toLocaleString('en-GB'),
-          lowerNote: new Date(milestone.updatedAt).toLocaleString('en-GB'),
+          upperNote: 'Written: ' + new Date(milestone.createdAt).toLocaleString('en-GB'),
+          lowerNote: 'Updated: '+ new Date(milestone.updatedAt).toLocaleString('en-GB'),
           url: `/milestones/${milestone._id}`,
           description: milestone.description,
           heading: milestone.name  

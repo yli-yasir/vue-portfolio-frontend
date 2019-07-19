@@ -1,8 +1,8 @@
 <template>
-<loader class="container" :endpoint="'/api/news/' + id">
+<loader class="container" :endpoint="'/api/milestones/' + id">
 <template v-slot:content="slotProps">
 <news-form 
-:action="'/api/news/' + id  "
+:action="'/api/milestones/' + id  "
 method="put"
 :name="slotProps.response.name"
 :description="slotProps.response.description"

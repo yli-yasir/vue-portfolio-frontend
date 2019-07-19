@@ -16,7 +16,6 @@
 </template>
 
 <script>
-import skeleton from "@/mixins/Skeleton";
 
 export default {
   props: {

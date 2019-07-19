@@ -37,43 +37,18 @@
       :content="youtubeEmbed"
     ></form-group>
 
-    <!-- since this might be repeated more than once, we need a unique id for
-    each contributor input, we will use the key for v-for to help.-->
     <form-group
-      v-for="(imgUrl,index) in imgUrls"
-      :key="imgUrl.key"
-      :input-id="'imgUrlsInput' + index"
+      v-for="(keyedImgUrl,index) in keyedImgUrls"
+      :key="keyedImgUrl.key"
+      :input-id="keyedImgUrl.key"
       input-name="imgUrls"
       :input-label="`Image No.${index+1} URL:`"
       placeholder="https://exampleimghosting/xyz.png"
       help="URL to image."
-      :content="imgUrl.url"
+      :content="keyedImgUrl.imgUrl"
     ></form-group>
-    <button type="button" class="d-block btn btn-primary mb-4" @click="addImgUrl">Add more images</button>
 
-    <div v-for="(contributor,index) in contributors" :key="contributor.key">
-      <form-group
-        :input-id=" 'contributorNamesInput' + index"
-        input-name="contributorNames"
-        :input-label="`Contributor No.${index+1} Name:`"
-        placeholder="John Smith"
-        help="The name of the contributor."
-        :content="contributor.name"
-      ></form-group>
-      <form-group
-        :input-id=" 'contributorRolesInput' + index "
-        input-name="contributorRoles"
-        :input-label="`Contributor No.${index+1} Role:`"
-        placeholder="Programmer"
-        help="The role of the contributor."
-        :content="contributor.role"
-      ></form-group>
-    </div>
-    <button
-      type="button"
-      class="btn btn-primary d-block"
-      @click="addContributor"
-    >Add more contributors</button>
+    <button type="button" class="d-block btn btn-primary mb-4" @click="addImgUrl">Add more images</button>
 
     <button type="button" @click="submitProject" class="my-4 btn btn-primary">Submit</button>
   </form>
@@ -82,10 +57,18 @@
 
 <script>
 import formGroup from "@/components/FormGroup";
-import keygen from "@/mixins/KeyGen";
 import axios from "axios";
+import Keygen from '@/utils/Keygen';
+//this will generate keys with the prefix of imgUrl
+let mKeygen = new Keygen('imgUrl');
+
 export default {
-  mixins: [keygen],
+  data: ()=>{
+   return  {
+     //this will be intialized through the created hook
+     keyedImgUrls: []
+    }
+  },
   props: {
     action: { type: String, default: "/api/projects" },
     method: { type: String, default: "post" },
@@ -99,35 +82,19 @@ export default {
     imgUrls: { type: Array, default: () => [""] },
     contributors: { type: Array, default: () => [{ name: "", role: "" }] }
   },
-  created: function() {
-    //once the component is created iterate over the items which do not have a key,
-    //and patch them with a key to enable them for rendering with v-for
-    var vueInstance = this;
-    this.imgUrls.forEach(function(imgUrl, index) {
-      vueInstance.$set(vueInstance.imgUrls, index, {
-        url: imgUrl,
-        key: vueInstance.genKey("imgUrl")
-      });
-    });
+  created(){
+    //this returns an array where each object contains the url and a key
+    this.keyedImgUrls =  this.imgUrls.map((imgUrl)=> {
+        return {
+          imgUrl,
+          key: mKeygen.gen()
+        }})
 
-    this.contributors.forEach(function(contributor, index) {
-      vueInstance.$set(vueInstance.contributors, index, {
-        name: contributor.name,
-        role: contributor.role,
-        key: vueInstance.genKey("contributor")
-      });
-    });
-  },
+    console.log(this.keyedImgUrls)
+    },
   methods: {
     addImgUrl: function() {
-      this.imgUrls.push({ url: "", key: this.genKey("imgurl") });
-    },
-    addContributor: function() {
-      this.contributors.push({
-        name: "",
-        role: "",
-        key: this.genKey("contributor")
-      });
+      this.keyedImgUrls.push({ url: "", key: mKeygen.gen() });
     },
     submitProject: async function() {
       try {

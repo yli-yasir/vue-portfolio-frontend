@@ -1,26 +1,26 @@
 <template>
-<loader class="container" :endpoint="'/api/members/' + id">
+<loader class="container" :endpoint="'/api/articles/' + id">
 <template v-slot:content="slotProps">
 <h1 class="mb-4">Editing Member: {{slotProps.response.name}}</h1>
-<member-form 
-:action="'/api/members/' + id"
+<article-form 
+:action="'/api/articles/' + id"
 method="put"
 :name="slotProps.response.name"
 :thumbnailUrl="slotProps.response.thumbnailUrl"
 :description="slotProps.response.description"
-></member-form>
+></article-form>
 </template>
 </loader>
 </template>
 
 <script>
 import loader from '@/components/Loader'
-import memberForm from './Form'
+import articleForm from './Form'
 
 export default {
   props: {id: String},
   components: {
-      loader, memberForm
+      loader, articleForm
   }
 }
 </script>

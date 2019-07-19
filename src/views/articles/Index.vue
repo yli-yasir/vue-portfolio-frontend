@@ -1,39 +1,36 @@
 <template>
-  <loader endpoint="/api/members">
+  <loader class="container" endpoint="/api/articles">
     <template v-slot:content="slotProps">
-      <!--
-      <div v-if="isLoggedIn" class="d-flex flex-row-reverse">
-        <router-link :to="{name: 'newMember'}" class="btn btn-primary mr-4">New Member</router-link>
-      </div>
-      -->
-      <div class="index">
-      <card
-        :isSkeleton="slotProps.isLoading"
-        v-for="item in slotProps.response"
-        :key="item._id"
-        :name="item.name"
-        :thumbnailUrl="item.thumbnailUrl"
-        :description="item.description"
-        :url="'/members/' + item._id"
-      ></card>
-      </div>
-    </template>
-    
-    <template v-slot:loading="slotProps">
-      <div class="index">
-      <card :isSkeleton="true" v-for="(one,index) in 4" :key="one + index"></card>
-      </div>
+        <staggered-cards :dataset="articlesToCards(slotProps.responseData)"></staggered-cards>
     </template>
   </loader>
 </template>
 
 <script>
-import card from "@/components/Card";
 import loader from "@/components/Loader";
+import staggeredCards from '@/components/StaggeredCards'
+
 export default {
   name: "index-screen",
   components: {
-    card,
+    staggeredCards,
     loader
+  },
+  methods: {
+    //convert the articles to objects which implement the card interface so they can
+    //be rendered properly by StaggeredCards component (see StaggeredCards.vue)
+    articlesToCards(articles){
+      if (articles){
+      return articles.map((article)=>{
+        return {
+          thumbnailUrl: article.thumbnailUrl,
+          title: article.name,
+          text: article.description,
+          url: `/articles/${article._id}`,
+          key: article._id
+        }
+      })
+      }
+    }
   }};
 </script>

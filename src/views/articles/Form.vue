@@ -39,7 +39,7 @@ import axios from 'axios';
 
 export default {
   props: {
-    action: {type: String, default:'/api/members'},
+    action: {type: String, default:'/api/articles'},
     method: {type: String, default:'post'},
     name: String,
     thumbnailUrl: String,
@@ -54,7 +54,7 @@ export default {
           url: this.action,
           data: new FormData(document.querySelector("form"))
         });
-        this.$router.push("/members");
+        this.$router.push("/articles");
       } catch (e) {
         console.log(e);
       }

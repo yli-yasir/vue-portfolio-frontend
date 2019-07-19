@@ -43,9 +43,9 @@
           data-toggle="collapse"
           data-target=".navbar-collapse.show"
           class="nav-item nav-link"
-          to="/members"
+          to="/articles"
         >
-          <span class="fas fa-users mr-1"></span>Members
+          <span class="fas fa-scroll mr-1"></span>Articles
         </router-link>
 
         <!-- welcome msg shown if user is logged in-->

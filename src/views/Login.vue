@@ -8,6 +8,7 @@
     ></form-group>
 
     <form-group
+      input-type="password"
       input-id="passwordInput"
       input-name="password"
       input-label="Password:"

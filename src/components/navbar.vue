@@ -1,6 +1,6 @@
 <template>
   <!--navbar-->
-  <nav class="navbar navbar-expand-sm navbar-dark bg-primary fixed-top justify-content-center">
+  <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top justify-content-center">
     <!--toggler-->
     <button
       class="navbar-toggler m-1"
@@ -48,9 +48,39 @@
           <span class="fas fa-scroll mr-1"></span>Articles
         </router-link>
 
-        <!-- welcome msg shown if user is logged in-->
+        <!--show this if the user is logged in-->
         <template v-if="$store.state.isLoggedIn">
-          <span id="welcome" class="ml-sm-auto nav-item">Welcome, {{$store.state.username}}</span>
+          <!-- set margin left auto on the first item shown-->
+          <router-link
+            data-toggle="collapse"
+            data-target=".navbar-collapse.show"
+            class="ml-sm-auto nav-item nav-link"
+            to="/milestones/new"
+          >
+          <span class="fas fa-plus-circle"></span>
+          Milestone
+          </router-link>
+                    <router-link
+            data-toggle="collapse"
+            data-target=".navbar-collapse.show"
+            class="nav-item nav-link"
+            to="/projects/new"
+          >
+          <span class="fas fa-plus-circle"></span>
+          Project
+          </router-link>
+                    <router-link
+            data-toggle="collapse"
+            data-target=".navbar-collapse.show"
+            class="nav-item nav-link"
+            to="/articles/new"
+          >
+          <span class="fas fa-plus-circle"></span>
+          Article
+          </router-link>
+          <!--welcome message-->
+          <span id="welcome" class="nav-item">Welcome, {{$store.state.username}}</span>
+          <!--logout-->
           <span
             id="logout"
             @click="$store.dispatch('logout')"
@@ -60,7 +90,7 @@
           >Logout</span>
         </template>
 
-        <!--login link-->
+        <!--else show the login link-->
         <router-link
           v-else
           data-toggle="collapse"

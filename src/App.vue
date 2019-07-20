@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-      <navbar v-on:logout="handleLogout" :username="username"></navbar>
-      <router-view :isLoggedIn="Boolean(username)" v-on:login="handleLogin" class="content"/>
+      <navbar></navbar>
+      <router-view class="content"/>
   </div>
 </template>
 
@@ -9,47 +9,12 @@
 import navbar from '@/components/Navbar'
 import axios from 'axios'
 export default {
-  data: function(){
-    return{
-    username: null}
-  },
 components: {
   navbar
 },
-methods: {
-  handleLogin: async function(formData){
-        try {
-        var response = await axios.post("/api/users/login",formData);
-        this.username = response.data;
-        this.$router.push('/')    
-      } catch (e) {
-        console.log('hi')
-        console.log(e);
-      }
-    
-  },
-  handleLogout: async function(){
-    try{
-      var response = await axios.post("/api/users/logout");
-      this.username = null
-    }
-    catch(e){
-      console.log(e)
-    }
-    
-  }
-},
-mounted: async function(){
-  //check if the user is logged in
-  try{
-let response = await axios.get('/api/users/login');
-this.username = response.data;
-  }
-  catch(e){
-    console.log(e)
-  }
+mounted(){
+  this.$store.dispatch('verifyLogin')
 }
-
 }
 </script>
 

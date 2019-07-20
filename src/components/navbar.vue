@@ -49,11 +49,11 @@
         </router-link>
 
         <!-- welcome msg shown if user is logged in-->
-        <template v-if="username">
-          <span id="welcome" class="ml-sm-auto nav-item">Welcome, {{username}}</span>
+        <template v-if="$store.state.isLoggedIn">
+          <span id="welcome" class="ml-sm-auto nav-item">Welcome, {{$store.state.username}}</span>
           <span
             id="logout"
-            @click="$emit('logout')"
+            @click="$store.dispatch('logout')"
             data-toggle="collapse"
             data-target=".navbar-collapse.show"
             class="nav-item nav-link"

@@ -26,9 +26,9 @@ import axios from "axios"
 
 export default {
   methods: {
-        submit:function() {
-      var formData = new FormData(document.querySelector("form"));
-      this.$emit('login',formData);
+        submit() {
+      let formData = new FormData(document.querySelector("form"));
+      this.$store.dispatch('login',{formData,router: this.$router});
     }
   }
   ,

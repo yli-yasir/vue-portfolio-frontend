@@ -3,7 +3,7 @@
 The responseData data will be exposed via the slotProps to whatever is in
 the 'content' slot.
 
-the responseData data that is passed (even while loading) is initially null, if
+the responseData data that is passed (even while loading) is initially an empty string, if
 loading is successful the it will be updated with the fetched data. Child component 
 should check for the intial value of null and handle it in anyway they deem suitable.
 
@@ -25,7 +25,7 @@ export default {
   props: { endpoint: String },
   data: function() {
     return {
-      responseData: null,
+      responseData: '',
       isLoading: true,
       isSuccess: false,
       isError: false

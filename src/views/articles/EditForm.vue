@@ -1,8 +1,7 @@
 <template>
 <loader class="container" :endpoint="'/api/articles/' + id">
 <template v-slot:content="{responseData}">
-  <template v-if="responseData">
-<h1 class="mb-4">Editing Member: {{responseData.name}}</h1>
+<h1 class="mb-4">Editing Article: {{responseData.name}}</h1>
 <article-form 
 :action="'/api/articles/' + id"
 method="put"
@@ -10,7 +9,6 @@ method="put"
 :thumbnailUrl="responseData.thumbnailUrl"
 :description="responseData.description"
 ></article-form>
-  </template>
 </template>
 </loader>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>
-      <span class="fas fa-flag mr-2"></span>Milestones
+      <span class="fas fa-flag-checkered mr-2"></span>Milestones
     </h1>
     <loader endpoint="/api/milestones">
       <template v-slot:content="slotProps">

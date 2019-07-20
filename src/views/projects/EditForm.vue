@@ -4,7 +4,6 @@
       <!-- the responseData is intially null until the loader fetches data
       so we don't render the form until the data is avaialable (quick and dirty
       solution)-->
-      <template v-if="responseData">
       <h1 class="mb-4">Editing Project: {{responseData.name}}</h1>
       <project-form
         :action="'/api/projects/' + id"
@@ -16,7 +15,6 @@
         :imgUrls="responseData.imgUrls"
         :contributors="responseData.contributors"
       ></project-form>
-      </template>
     </template>
   </loader>
 </template>

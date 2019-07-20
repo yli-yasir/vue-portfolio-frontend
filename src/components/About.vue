@@ -1,6 +1,6 @@
 <template>
     <div class="about">
-      <h1>Yasir Al-Baldawi</h1>
+      <h1><span class="fas fa-user-circle mr-2"></span>Yasir Al-Baldawi</h1>
       <cite>
         “To live is not to breathe but to act.
         It is to make use of our organs, our senses, our faculties, of all the parts of
@@ -21,5 +21,9 @@
         <a href="https://github.com/yli-yasir" class="m-2" style="float:right">
         <h1><span class="fas fa-envelope"></span></h1>
         </a>
+        <a href="https://github.com/yli-yasir" class="m-2" style="float:right">
+        <h1><span class="fab fa-linkedin"></span></h1>
+        </a>
+
     </div>
 </template>

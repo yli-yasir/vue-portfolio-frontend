@@ -3,9 +3,8 @@
     <template v-slot:content="slotProps">
       <div class="detailsContainer mx-auto">
         <h1 class="text-center">{{slotProps.responseData.name}}</h1>
-        <!--
-        <control-bar v-if="isLoggedIn" basePath="/members" :id="id"></control-bar>
-        -->
+        <manage-bar v-if="$store.state.isLoggedIn" path="/articles" :id="id"></manage-bar>
+
         <p class="mt-4">{{slotProps.responseData.description}}</p>
       </div>
     </template>
@@ -14,10 +13,10 @@
 
  <script>
 import loader from "@/components/Loader";
-import controlBar from '@/components/ControlBar';
+import manageBar from '@/components/ManagePostBar';
 
 export default {
   props: { id: String },
-  components: { loader,controlBar }
+  components: { loader,manageBar }
 };
 </script>

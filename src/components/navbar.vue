@@ -17,7 +17,7 @@
     <!--nav container-->
     <div class="collapse navbar-collapse" id="navContainer">
       <!--nav-->
-      <div class="navbar-nav container-fluid ml-sm-4">
+      <div class="navbar-nav container-fluid ml-md-4">
         <!--home link-->
         <router-link
           data-toggle="collapse"
@@ -54,7 +54,7 @@
           <router-link
             data-toggle="collapse"
             data-target=".navbar-collapse.show"
-            class="ml-sm-auto nav-item nav-link"
+            class="ml-md-auto nav-item nav-link"
             to="/milestones/new"
           >
           <span class="fas fa-plus-circle"></span>

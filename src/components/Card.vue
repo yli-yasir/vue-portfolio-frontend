@@ -7,10 +7,12 @@ the columns properly-->
 <template>
 <div :class="{skeleton: isSkeleton}" class="card">
   <img v-if="!isSkeleton" :src="thumbnailUrl" class="card-img-top" alt="thumbnail">
-  <div v-else class="card-img-top" :style="'height:' + random(100,500) + 'px'"></div>
+  <div v-else class="card-img-top"></div>
   <div class="card-body">
     <h5 class="card-title">{{title}}</h5>
-    <p class="card-text">{{text}}</p>
+    <p v-if="!isSkeleton" class="card-text">{{text}}</p>
+    <!-- a random height p to give the cards a variable height-->
+    <p v-else :style="'min-height:' + random(100,200) + 'px'"></p>
     <router-link v-if="!isSkeleton" :to="!url ? '#' : url" class="btn btn-primary">More</router-link>
     <div v-else id="btnSkeleton"></div>
   </div>
@@ -18,6 +20,8 @@ the columns properly-->
 </template>
 
 <script>
+import {random} from '@/utils/common'
+
 export default {
   props: {
     thumbnailUrl: String,
@@ -31,9 +35,7 @@ export default {
     }
   },
   methods: {
-    random(min,max){
-      return Math.floor(Math.random() * (max-min) + min)
-    }
+    random
   }
 };
 </script>
@@ -42,11 +44,15 @@ export default {
 
 $skeleton-bg : rgba(black,0.1);
 
-
+.card-img-top{
+    min-height:150px;
+    max-height:150px;
+}
 .skeleton {
   .card-img-top {
     background-color: $skeleton-bg;
   }
+
   #btnSkeleton{
     height:25px;
     width:50px;

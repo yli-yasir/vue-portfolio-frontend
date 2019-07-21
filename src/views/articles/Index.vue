@@ -9,6 +9,7 @@
 <script>
 import loader from "@/components/Loader";
 import staggeredCards from '@/components/StaggeredCards'
+import {random} from '@/utils/common'
 
 export default {
   name: "index-screen",
@@ -25,7 +26,7 @@ export default {
         return {
           thumbnailUrl: article.thumbnailUrl,
           title: article.name,
-          text: article.description,
+          text: article.description.substring(0,random(100,700)) + '...',
           url: `/articles/${article._id}`,
           key: article._id
         }

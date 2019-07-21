@@ -35,7 +35,7 @@ export default {
           upperNote: 'Written: ' + new Date(milestone.createdAt).toLocaleString('en-GB'),
           lowerNote: 'Updated: '+ new Date(milestone.updatedAt).toLocaleString('en-GB'),
           url: `/milestones/${milestone._id}`,
-          description: milestone.description,
+          description: milestone.description.substring(0,50) + '...',
           heading: milestone.name  
         };
       });

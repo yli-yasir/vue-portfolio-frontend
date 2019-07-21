@@ -9,6 +9,8 @@
 <script>
 import loader from "@/components/Loader";
 import staggeredCards from '@/components/StaggeredCards'
+import {random} from '@/utils/common'
+
 export default {
   components: {
     loader,
@@ -24,7 +26,7 @@ export default {
           key: project._id,
           thumbnailUrl: project.thumbnailUrl,
           title: project.name,
-          text: project.description.length < 150 ? project.description : project.description.substring(0,150) + '...',
+          text: project.description.substring(0,random(100,700)) + '...',
           url: `/projects/${project._id}`
         }
       })

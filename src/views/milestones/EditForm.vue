@@ -6,6 +6,7 @@
 method="put"
 :name="responseData.name"
 :description="responseData.description"
+:originDate="responseDate.originDate"
 ></news-form>
 </template>
 </loader>

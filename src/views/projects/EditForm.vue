@@ -13,7 +13,7 @@
         :youtubeEmbed="responseData.youtubeEmbed"
         :description="responseData.description"
         :imgUrls="responseData.imgUrls"
-        :contributors="responseData.contributors"
+        :originDate="responseData.originDate"
       ></project-form>
     </template>
   </loader>

@@ -19,6 +19,16 @@
       :content="description"
     ></form-group>
 
+<form-group
+      input-id="originDate"
+      input-name="originDate"
+      input-label="Origin Date:"
+      input-type="date"
+      placeholder="https://exampleimghosting/xyz.png"
+      help="The date 'it' was conceived."
+      :content="originDate"
+    ></form-group>
+
     <button type="button" @click="submitNews" class="mb-4 btn btn-primary">Submit</button>
   </form>
 </template>
@@ -32,7 +42,8 @@ export default {
     action: {type: String, default:'/api/milestones'},
     method: {type: String, default: 'post'},
     name: String,
-    description: String
+    description: String,
+    originDate: Date
   },
   components: {formGroup},
   methods: {

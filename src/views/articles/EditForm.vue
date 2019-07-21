@@ -8,6 +8,7 @@ method="put"
 :name="responseData.name"
 :thumbnailUrl="responseData.thumbnailUrl"
 :description="responseData.description"
+:originDate="responseData.originDate"
 ></article-form>
 </template>
 </loader>

@@ -50,6 +50,16 @@
 
     <button type="button" class="d-block btn btn-primary mb-4" @click="addImgUrl">Add more images</button>
 
+      <form-group
+      input-id="originDate"
+      input-name="originDate"
+      input-label="Origin Date:"
+      input-type="date"
+      placeholder="https://exampleimghosting/xyz.png"
+      help="The date 'it' was conceived."
+      :content="originDate"
+    ></form-group>
+
     <button type="button" @click="submitProject" class="my-4 btn btn-primary">Submit</button>
   </form>
 </template>
@@ -80,7 +90,7 @@ export default {
     description: String,
     youtubeEmbed: String,
     imgUrls: { type: Array, default: () => [""] },
-    contributors: { type: Array, default: () => [{ name: "", role: "" }] }
+    originDate:Date
   },
   created(){
     //this returns an array where each object contains the url and a key

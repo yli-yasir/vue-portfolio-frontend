@@ -28,7 +28,17 @@
       :content="description"
     ></form-group>
 
-    <button @click="submitMember" type="button" class="mb-4 btn btn-primary">Submit</button>
+          <form-group
+      input-id="originDate"
+      input-name="originDate"
+      input-label="Origin Date:"
+      input-type="date"
+      placeholder="https://exampleimghosting/xyz.png"
+      help="The date 'it' was conceived."
+      :content="originDate"
+    ></form-group>
+
+    <button @click="submitArticle" type="button" class="mb-4 btn btn-primary">Submit</button>
   </form>
 </template>
 
@@ -43,11 +53,12 @@ export default {
     method: {type: String, default:'post'},
     name: String,
     thumbnailUrl: String,
-    description: String
+    description: String,
+    originDate: Date
   },
   components: {formGroup},
   methods: {
-        submitMember: async function() {
+        async submitArticle() {
       try {
         await axios({
           method: this.method,

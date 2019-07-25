@@ -19,11 +19,13 @@
       v-else
       :type="inputType"
       :name="inputName"
+      :class="{'is-invalid' :isInvalid, 'is-valid': isValid}"
       class="form-control"
       :id="inputId"
       :aria-describedby="helpId"
       :placeholder="placeholder"
       :value="content"
+      v-model="ownContent"
     >
     <small :id="helpId" class="form-text text-muted">{{help}}</small>
   </div>
@@ -43,16 +45,24 @@ export default {
   props: {
     inputType: { type: String, default: "text" },
     textArea: { type: Boolean, default: false },
-    inputId: { type: String },
-    inputName: { type: String },
-    inputLabel: { type: String },
-    placeholder: { type: String },
-    help: { type: String },
-    content: { type: String }
+    inputId: String,
+    inputName:  String ,
+    inputLabel:  String ,
+    placeholder: String ,
+    help: String,
+    content:  String ,
+    //valid values are "valid"/"invalid"/"neutral"
+    status: {type: String, default: "neutral"}
   },
   computed: {
-    helpId: function() {
+    helpId() {
       return this.inputId + "Help";
+    },
+    isValid(){
+      return this.status === "valid"
+    },
+    isInvalid(){
+      return this.status ==="invalid"
     }
   },
   mounted: function() {

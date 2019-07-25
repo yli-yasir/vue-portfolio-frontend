@@ -20,14 +20,18 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    async login({ commit }, { formData, router }) {
-      try {
-        let response = await axios.post("/api/users/login", formData);
-        commit("loggedIn", { username: response.data });
-        router.push("/");
-      } catch (e) {
-        console.log(e);
-      }
+     login({ commit }, { formData }) {
+       return axios.post("/api/users/login",formData)
+       .then(response=>commit("loggedIn", { username: response.data.username }))
+       
+
+      // try {
+      //   let response = await axios.post("/api/users/login", formData);
+      //   commit("loggedIn", { username: response.data.username });
+      //   router.push("/");
+      // } catch (e) {
+      //   console.log(e);
+      // }
     },
     async logout({ commit }) {
       try {
@@ -41,7 +45,7 @@ export default new Vuex.Store({
       //check if the user is logged in
       try {
         let response = await axios.get("/api/users/login");
-        commit("loggedIn", { username: response.data });
+        commit("loggedIn", { username: response.data.username });
       } catch (e) {
         console.log(e);
       }

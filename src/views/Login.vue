@@ -5,6 +5,7 @@
       input-name="username"
       input-label="Username:"
       placeholder="John Smith"
+      :status="usernameStatus"
     ></form-group>
 
     <form-group
@@ -13,9 +14,10 @@
       input-name="password"
       input-label="Password:"
       placeholder="Cats"
+      :status="passwordStatus"
     ></form-group>
 
-    <button type="button" class="mb-4 btn btn-primary" @click="submit">Submit</button>
+    <button type="button" class="mb-4 btn btn-primary" @click="submitStuff">Submit</button>
   </form>
 </template>
 
@@ -25,13 +27,27 @@ import formGroup from "@/components/FormGroup";
 import axios from "axios"
 
 export default {
+  data: ()=> {
+    return {errors: {}}
+    },
   methods: {
-        submit() {
+        submitStuff() {
       let formData = new FormData(document.querySelector("form"));
-      this.$store.dispatch('login',{formData,router: this.$router});
+      this.$store.dispatch('login',{formData})
+      .then(()=>this.$router.push("/"))
+      .catch(e=>this.errors = e.response.data);
     }
   }
   ,
+  computed: {
+usernameStatus(){
+  return this.errors.username ? 'invalid' : 'neutral'
+  
+},
+passwordStatus(){
+  return this.errors.password ? 'invalid' : 'neutral'
+ }
+  },
   components: {formGroup}
 
 };

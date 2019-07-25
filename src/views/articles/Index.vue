@@ -26,7 +26,9 @@ export default {
         return {
           thumbnailUrl: article.thumbnailUrl,
           title: article.name,
-          text: article.description.substring(0,random(100,700)) + '...',
+          text: article.description?
+          article.description.substring(0,random(100,700)) + '...' :
+          '',
           url: `/articles/${article._id}`,
           key: article._id
         }

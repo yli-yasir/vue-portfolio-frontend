@@ -26,7 +26,10 @@ export default {
           key: project._id,
           thumbnailUrl: project.thumbnailUrl,
           title: project.name,
-          text: project.description.substring(0,random(100,700)) + '...',
+          text: 
+          project.description ? 
+          project.description.substring(0,random(100,700)) + '...':
+          '',
           url: `/projects/${project._id}`
         }
       })

@@ -6,8 +6,8 @@ the StaggeredCards component requires the cards to be of variable length to disp
 the columns properly-->
 <template>
 <div :class="{skeleton: isSkeleton}" class="card">
-  <img v-if="!isSkeleton" :src="thumbnailUrl" class="card-img-top" alt="thumbnail">
-  <div v-else class="card-img-top"></div>
+  <img v-if="!isSkeleton && thumbnailUrl" :src="thumbnailUrl" class="card-img-top" alt="thumbnail">
+  <div v-if="isSkeleton" class="card-img-top"></div>
   <div class="card-body">
     <h5 class="card-title">{{title}}</h5>
     <p v-if="!isSkeleton" class="card-text">{{text}}</p>

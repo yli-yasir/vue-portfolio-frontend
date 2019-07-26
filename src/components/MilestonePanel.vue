@@ -32,8 +32,8 @@ export default {
       return milestones.map((milestone) => {
         return {
           key: milestone._id,
-          upperNote: 'Written: ' + new Date(milestone.createdAt).toLocaleString('en-GB'),
-          lowerNote: 'Updated: '+ new Date(milestone.updatedAt).toLocaleString('en-GB'),
+          upperNote: 'Occured: '+ new Date(milestone.originDate).toLocaleString('en-GB'),
+          lowerNote: 'Written: ' + new Date(milestone.createdAt).toLocaleString('en-GB'),
           url: `/milestones/${milestone._id}`,
           description: milestone.description ?
           milestone.description.substring(0,50) + '...':

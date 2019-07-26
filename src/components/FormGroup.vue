@@ -65,8 +65,10 @@ export default {
       return this.status ==="invalid"
     }
   },
-  mounted: function() {
+  watch:  {
+    content(){
     this.ownContent = this.content;
+    }
   }
 };
 </script>

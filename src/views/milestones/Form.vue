@@ -23,8 +23,7 @@
       input-id="originDate"
       input-name="originDate"
       input-label="Origin Date:"
-      input-type="date"
-      placeholder="https://exampleimghosting/xyz.png"
+      input-type="datetime-local"
       help="The date 'it' was conceived."
       :content="originDate"
     ></form-group>
@@ -43,7 +42,7 @@ export default {
     method: {type: String, default: 'post'},
     name: String,
     description: String,
-    originDate: Date
+    originDate: String
   },
   components: {formGroup},
   methods: {
@@ -58,7 +57,7 @@ export default {
       } catch (e) {
         console.log(e);
       }
-    }
+    },
 
 }};
 </script>
